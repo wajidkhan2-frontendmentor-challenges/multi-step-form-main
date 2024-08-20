@@ -1,0 +1,5 @@
+/* .each-step:has(input[type=radio]:checked) > .step-number-icon {
+    background-color: var(--clr-prim-4);
+    border-color: var(--clr-prim-4);
+    color: var(--clr-prim-1);
+} */

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./static/globle.css">
+  <link rel="stylesheet" href="./static/layout.css">
+  <link rel="stylesheet" href="./static/style.css">
+  <link rel="stylesheet" href="./static/states.css">
+  
+  <title>Frontend Mentor | Multi-step form</title>
+
+</head>
+<body>
+
+	<div class="main-layout">
+		<main class="main">
+			<section class="document-form">
+				<div class="form-steps">
+					<div class="steps-btns">
+						<label class="each-step" for="step-1">
+							<input type="radio" name="step" id="step-1" value="step-1" class="sr-only">
+							<span class="step-number-icon">1</span>
+							<div class="step-btn-info">
+								<span class="step-numbering">Step 1</span>
+								<span class="step-title">Your info</span>
+							</div>
+						</label>
+
+						<label class="each-step" for="step-2">
+							<input type="radio" name="step" id="step-2" value="step-2" class="sr-only">
+							<span class="step-number-icon">2</span>
+							<div class="step-btn-info">
+								<span class="step-numbering">Step 2</span>
+								<span class="step-title">Select plan</span>
+							</div>
+						</label>
+
+						<label class="each-step" for="step-3">
+							<input type="radio" name="step" id="step-3" value="step-3" class="sr-only">
+							<span class="step-number-icon">3</span>
+							<div class="step-btn-info">
+								<span class="step-numbering">Step 3</span>
+								<span class="step-title">Add-ons</span>
+							</div>
+						</label>
+
+						<label class="each-step" for="step-4">
+							<input type="radio" name="step" id="step-4" value="step-4" class="sr-only">
+							<span class="step-number-icon">4</span>
+							<div class="step-btn-info">
+								<span class="step-numbering">Step 4</span>
+								<span class="step-title">Summary</span>
+							</div>
+						</label>
+					</div>
+					<picture class="main-section-picture">
+						<source media="(min-width: 69.375em)" srcset="static/images/bg-sidebar-desktop.svg">
+						<img src="static/images/bg-sidebar-mobile.svg" alt="">
+					</picture>
+				</div>
+
+				<div class="form-fields">
+
+					<!-- step 1 -->
+					<!-- <div class="field-set-main step-1-fields">
+						<div class="fields-sets">
+							<div class="fields">
+								<h1 class="your-info-title heading-1">Personal info</h1>
+								<p class="your-info-para paragraph">Please provide your name, email address, and phone number.</p>
+		
+								<label class="your-info-text-field-label" for="user-name">Name</label>
+								<input type="text" id="user-name" placeholder="e.g. Stephen King" class="your-info-text-field">
+		
+								<label class="your-info-text-field-label" for="email-eddress">Email Address</label>
+								<input type="text" id="email-eddress" placeholder="e.g. stephenking@lorem.com" class="your-info-text-field">
+		
+								<label class="your-info-text-field-label" for="phone-number">Phone Number</label>
+								<input type="text" id="phone-number" placeholder="e.g. +1 234 567 890" class="your-info-text-field">
+							</div>
+						</div>
+
+						<div class="back-and-next place-end">
+							<button class="next-btn">Next Step</button>
+						</div>
+					</div> -->
+
+					<!-- step 2 -->
+					<div class="field-set-main step-2-fields">
+						<div class="fields-sets">
+							<div class="fields">
+								<h2 class="select-plan-title heading-1">Select your plan</h2>
+								<p class="select-plan-para paragraph">You have the option of monthly or yearly billing.</p>
+
+								<div class="select-plan-options">
+								
+									<label for="arcade" class="select-plan-option">
+										<input type="radio" name="select-plan-option" id="arcade" class="sr-only">
+										<img src="./static/images/icon-arcade.svg" alt="">
+										<div>
+											<p class="select-plan-option-title">Arcade</p>
+											<p class="select-plan-option-price">$9/mo</p>
+										</div>
+									</label>
+	
+									<label for="advanced" class="select-plan-option">
+										<input type="radio" name="select-plan-option" id="advanced" class="sr-only">
+										<img src="./static/images/icon-advanced.svg" alt="">
+										<div>
+											<p class="select-plan-option-title">Advanced</p>
+											<p class="select-plan-option-price">$12/mo</p>
+										</div>
+									</label>
+	
+									<label for="pro" class="select-plan-option">
+										<input type="radio" name="select-plan-option" id="pro" class="sr-only">
+										<img src="./static/images/icon-pro.svg" alt="">
+										<div>
+											<p class="select-plan-option-title">pro</p>
+											<p class="select-plan-option-price">$15/mo</p>
+										</div>
+									</label>
+	
+								</div>
+
+								<div class="monthly-and-year">
+									<label for="monthly">
+										<input type="radio" name="select-plan-option" id="monthly" class="sr-only">
+										<span>Monthly</span>
+									</label>
+									<span class="monthly-and-year-icon"></span>
+									<label for="yearly">
+										<input type="radio" name="select-plan-option" id="yearly" class="sr-only">
+										<span>Yearly</span>
+									</label>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="back-and-next place-spaced">
+							<button class="back-btn">Go back</button>
+							<button class="next-btn">Next Step</button>
+						</div>
+					</div>
+
+
+				</div>
+			</section>
+		</main>
+		<!-- <footer class="footer">
+			Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    		Coded by <a href="#">Your Name Here</a>.
+		</footer> -->
+	</div>
+
+</body>
+</html>
+
+
+					<!-- <div class="for-select-plan">
+						<div class="fields-sets">
+							<h1 class="select-plan-title heading-2">Select your plan</h1>
+							<p class="select-plan-para paragraph">You have the option of monthly or yearly billing.</p>
+
+							<div class="select-plan-options">
+								
+								<label for="arcade">
+									<input type="radio" name="select-plan-option" id="arcade">
+									<img src="./static/images/icon-arcade.svg" alt="">
+									<span>Arcade</span>
+									<span>$9/mo</span>
+								</label>
+
+								<label for="advanced">
+									<input type="radio" name="select-plan-option" id="advanced">
+									<img src="./static/images/icon-advanced.svg" alt="">
+									<span>Advanced</span>
+									<span>$12/mo</span>
+								</label>
+
+								<label for="pro">
+									<input type="radio" name="select-plan-option" id="pro">
+									<img src="./static/images/icon-pro.svg" alt="">
+									<span>pro</span>
+									<span>$15/mo</span>
+								</label>
+
+							</div>
+
+							<label for="monthly-and-year">
+								<input type="checkbox" name="" id="monthly-and-year">
+								<span class="Monthly">Monthly</span>
+								<span class="monthly-and-year-icon"></span>
+								<span class="Yearly">Yearly</span>
+							</label>
+
+						</div>
+
+						<div class="back-and-next">
+							<button class="back-btn">Go Back</button>
+							<button class="next-btn">Next Step</button>
+						</div>
+					</div> -->
