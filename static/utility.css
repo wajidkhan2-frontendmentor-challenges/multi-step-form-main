@@ -1,0 +1,28 @@
+.upercase {
+    text-transform: uppercase;
+}
+.txt-nrml {
+    font-weight: var(--fw-normal);
+}
+.txt-mdm {
+    font-weight: var(--fw-medium);
+}
+.txt-bld {
+    font-weight: var(--fw-bold);
+}
+
+.clr-prim-1 {
+    color: var(--clr-prim-1);
+}
+
+.clr-prim-2 {
+    color: var(--clr-neut-2);
+}
+
+.clr-neut-1 {
+    color: var(--clr-neut-1);
+}
+
+.clr-neut-5 {
+    color: var(--clr-neut-5);
+}
