@@ -1,15 +1,45 @@
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    /* background-color: blue; */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+
+    display: flex;
+}
+
+.footer {
+    text-align: center;
+}
+
+
+.document-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
 .form-steps {
     position: relative;
 }
 
 .steps-btns {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 15px;
 
     position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* .each-step { } */
@@ -22,6 +52,28 @@
 
 
 
+.form-fields {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+.field-set-main {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.fields-sets {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+.fields {
+    position: relative;
+    margin-top: -20%;
+}
 
 .tx-inp-d {
     display: flex;
@@ -31,23 +83,57 @@
 
 
 
+.back-and-next {
+    display: flex;
+}
 
+.place-end { justify-content: flex-end; }
+.place-start { justify-content: flex-start; }
+.place-spaced { justify-content: space-between; }
 
 
 
 @media only screen and (min-width: 69.375em ) /* min-width:  1110px */ {
-    /* .form-steps { } */
-    .steps-btns {
-        flex-direction: column;
+    .main {
+        justify-content: center;
+        align-items: center;
     }
-    
-    .each-step {
+    .document-form {
+        width: 1000px;
         display: flex;
         flex-direction: row;
     }
     
+    /* .form-steps { } */
+    
+    .steps-btns {
+        width: max-content;
+        transform: translateX(0%);
+        left: 33px;
+        top: 44px;
+
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .each-step {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+    
     .step-btn-info {
         display: block;
+    }
+
+    .field-set-main {
+        width: 75%;
+        margin-inline: auto;
+    }
+
+    .fields {
+        position: static;
+        margin-top: 0;
     }
 }
 
