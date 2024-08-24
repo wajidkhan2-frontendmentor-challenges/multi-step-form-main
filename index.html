@@ -36,46 +36,46 @@
 			<main class="main">
 				
 				<section class="document-form">
-					<div class="form-steps">
-						<div class="steps-btns">
+					<div class="form-links">
+						<ul class="links-list">
+							<li>
+								<a href="#" class="link">
+									<span class="num-icon">1</span>
+									<div class="link-info">
+										<p class="txt-nrml clr-neut-1 upercase">Step 1</p>
+										<p class="txt-bld clr-neut-5 upercase">Your info</p>
+									</div>
+								</a>
+							</li>
 
-							<label class="each-step" for="step-1">
-								<input type="radio" name="step" id="step-1" value="step-1" class="sr-only">
-								<span class="num-icon">1</span>
-								<div class="step-btn-info">
-									<p class="txt-nrml clr-neut-1 upercase">Step 1</p>
-									<p class="txt-bld clr-neut-5 upercase">Your info</p>
-								</div>
-							</label>
-
-							<label class="each-step" for="step-1">
-								<input type="radio" name="step" id="step-1" value="step-1" class="sr-only">
-								<span class="num-icon">2</span>
-								<div class="step-btn-info">
-									<p class="txt-nrml clr-neut-1 upercase">Step 2</p>
-									<p class="txt-bld clr-neut-5 upercase">Select plan</p>
-								</div>
-							</label>
-
-							<label class="each-step" for="step-1">
-								<input type="radio" name="step" id="step-1" value="step-1" class="sr-only">
-								<span class="num-icon">3</span>
-								<div class="step-btn-info">
-									<p class="txt-nrml clr-neut-1 upercase">Step 3</p>
-									<p class="txt-bld clr-neut-5 upercase">Add-ons</p>
-								</div>
-							</label>
-
-							<label class="each-step" for="step-1">
-								<input type="radio" name="step" id="step-1" value="step-1" class="sr-only">
-								<span class="num-icon">4</span>
-								<div class="step-btn-info">
-									<p class="txt-nrml clr-neut-1 upercase">Step 4</p>
-									<p class="txt-bld clr-neut-5 upercase">Summary</p>
-								</div>
-							</label>
-
-						</div>
+							<li>
+								<a href="#" class="link">
+									<span class="num-icon">2</span>
+									<div class="link-info">
+										<p class="txt-nrml clr-neut-1 upercase">Step 2</p>
+										<p class="txt-bld clr-neut-5 upercase">Select plan</p>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="link">
+									<span class="num-icon">3</span>
+									<div class="link-info">
+										<p class="txt-nrml clr-neut-1 upercase">Step 3</p>
+										<p class="txt-bld clr-neut-5 upercase">Add-ons</p>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="link">
+									<span class="num-icon">4</span>
+									<div class="link-info">
+										<p class="txt-nrml clr-neut-1 upercase">Step 4</p>
+										<p class="txt-bld clr-neut-5 upercase">Summary</p>
+									</div>
+								</a>
+							</li>
+						</ul>
 
 						<picture class="main-section-picture">
 							<source media="(min-width: 69.375em)" srcset="static/images/bg-sidebar-desktop.svg">
@@ -84,6 +84,7 @@
 					</div>
 
 					<div class="form-fields">
+
 						<!-- step 1 -->
 						<!-- <div class="field-set-main step-1-fields">
 							<div class="fields-sets">
@@ -91,20 +92,22 @@
 									<h1 class="hd-s">Personal info</h1>
 									<p class="pr-s">Please provide your name, email address, and phone number.</p>
 									
-									<div class="tx-inp-d">
+									<div class="info-Wrapper" data-error="true">
 										<label class="tx-inp-lbl-s clr-prim-1" for="user-name">Name</label>
-										<p class="tx-inp-er-s">This field is required</p>
-										<input type="text" id="user-name" placeholder="e.g. Stephen King" class="tx-inp-s">
+										<p class="info-error">This field is required</p>
+										<input type="text" id="user-name" placeholder="e.g. Stephen King" class="info-text-input">
 									</div>
 
-									<div class="tx-inp-d">
+									<div class="info-Wrapper">
 										<label class="tx-inp-lbl-s clr-prim-1" for="email-eddress">Email Address</label>
-										<input type="text" id="email-eddress" placeholder="e.g. stephenking@lorem.com" class="tx-inp-s">
+										<p class="info-error">This field is required</p>
+										<input type="text" id="email-eddress" placeholder="e.g. stephenking@lorem.com" class="info-text-input">
 									</div>
 
-									<div class="tx-inp-d">
+									<div class="info-Wrapper">
 										<label class="tx-inp-lbl-s clr-prim-1" for="phone-number">Phone Number</label>
-										<input type="text" id="phone-number" placeholder="e.g. +1 234 567 890" class="tx-inp-s">
+										<p class="info-error">This field is required</p>
+										<input type="text" id="phone-number" placeholder="e.g. +1 234 567 890" class="info-text-input">
 									</div>
 			
 								</div>
@@ -116,16 +119,16 @@
 						</div> -->
 
 						<!-- step 2 -->
-						<!-- <div class="field-set-main step-1-fields">
+						<div class="field-set-main step-2-fields">
 							<div class="fields-sets">
 								<div class="fields">
 									<h1 class="hd-s">Select your plan</h1>
 									<p class="pr-s">You have the option of monthly or yearly billing.</p>
 
-									<div class="step-2-options">
-										<label for="arcade" class="step-2-option">
+									<div class="diff-plans" data-yearly="false">
+										<label for="arcade" class="plan">
 											<input type="radio" name="select-plan-option" id="arcade" class="sr-only">
-											<img src="./static/images/icon-arcade.svg" class="step-2-option-img" alt="">
+											<img src="./static/images/icon-arcade.svg" class="plan-icon" alt="">
 											<div>
 												<p class="txt-mdm clr-prim-1">Arcade</p>
 												<p class="txt-nrml clr-neut-1">$9/mo</p>
@@ -133,9 +136,9 @@
 											</div>
 										</label>
 		
-										<label for="advanced" class="step-2-option">
+										<label for="advanced" class="plan">
 											<input type="radio" name="select-plan-option" id="advanced" class="sr-only">
-											<img src="./static/images/icon-advanced.svg" class="step-2-option-img" alt="">
+											<img src="./static/images/icon-advanced.svg" class="plan-icon" alt="">
 											<div>
 												<p class="txt-mdm clr-prim-1">Advanced</p>
 												<p class="txt-nrml clr-neut-1">$12/mo</p>
@@ -143,9 +146,9 @@
 											</div>
 										</label>
 		
-										<label for="pro" class="step-2-option">
+										<label for="pro" class="plan">
 											<input type="radio" name="select-plan-option" id="pro" class="sr-only">
-											<img src="./static/images/icon-pro.svg" class="step-2-option-img" alt="">
+											<img src="./static/images/icon-pro.svg" class="plan-icon" alt="">
 											<div>
 												<p class="txt-mdm clr-prim-1">pro</p>
 												<p class="txt-nrml clr-neut-1">$15/mo</p>
@@ -173,13 +176,48 @@
 								<button class="btn gob">Go back</button>
 								<button class="btn nex">Next step</button>
 							</div>
-						</div> -->
+						</div>
 
 						<!-- step 3 -->
-						<div class="field-set-main step-1-fields">
+						<!-- <div class="field-set-main step-1-fields">
 							<div class="fields-sets">
 								<div class="fields">
-									todo
+									<h1 class="hd-s">Pick add-ons</h1>
+									<p class="pr-s">Add-ons help enhance your gaming experience.</p>
+
+									<div class="add-ons">
+
+										<label class="add-on" for="">
+											<input type="checkbox" class="sr-only"> 
+											<span class="chechbox-icon"></span>
+											<div>
+												<p class="txt-mdm clr-prim-1">Online service</p>
+												<p class="txt-nrml clr-neut-1">Access to multiplayer games</p>
+											</div>
+											<p class="txt-nrml clr-prim-2">+$1/mo</p>
+										</label>
+
+										<label class="add-on" for="">
+											<input type="checkbox" class="sr-only"> 
+											<span class="chechbox-icon"></span>
+											<div>
+												<p class="txt-mdm clr-prim-1">Larger storage</p>
+												<p class="txt-nrml clr-neut-1">Extra 1TB of cloud save</p>
+											</div>
+											<p class="txt-nrml clr-prim-2">+$2/mo</p>
+										</label>
+
+										<label class="add-on" for="">
+											<input type="checkbox" class="sr-only"> 
+											<span class="chechbox-icon"></span>
+											<div>
+												<p class="txt-mdm clr-prim-1">Customizable Profile</p>
+												<p class="txt-nrml clr-neut-1">Custom theme on your profile</p>
+											</div>
+											<p class="txt-nrml clr-prim-2">+$2/mo</p>
+										</label>
+
+									</div>
 								</div>
 							</div>
 
@@ -187,19 +225,73 @@
 								<button class="btn gob">Go back</button>
 								<button class="btn nex">Next step</button>
 							</div>
-						</div>
+						</div> -->
 
 						<!-- step 4 -->
-						<!-- <div class="field-set-main step-1-fields">
+						<!-- <div class="field-set-main step-4-fields">
 							<div class="fields-sets">
 								<div class="fields">
-									todo
+									<h1 class="hd-s">Finishing up</h1>
+									<p class="pr-s">Double-check everything looks OK before confirming.</p>
+
+									<div class="Summary-table">
+										<div class="table-section-1">
+
+											<div class="table-data">
+
+												<div>
+													<p class="txt-mdm clr-prim-1">Arcade (monthly)</p>
+													<a class="clr-neut-1" href="#">Change</a>
+												</div>
+												<p class="txt-bld clr-prim-1">$9/mo</p>
+
+											</div>
+
+											<div class="table-data">
+												<p class="txt-mdm clr-neut-1">Online service</p>
+												<p class="txt-mdm clr-prim-1">+$1/mo</p>
+											</div>
+
+											<div class="table-data">
+												<p class="txt-mdm clr-neut-1">Larger storage</p>
+												<p class="txt-mdm clr-prim-1">+$2/mo</p>
+											</div>
+
+										</div>
+										<div class="table-section-2">
+
+											<div class="table-data">
+												<p class="txt-mdm clr-neut-1">Total (per month)</p>
+												<p class="txt-bld clr-prim-2">+$12/mo</p>
+											</div>
+
+										</div>
+									</div>
 								</div>
 							</div>
 
-							<div class="back-and-next place-end">
-								todo
+							<div class="back-and-next place-spaced">
+								<button class="btn gob">Go back</button>
+								<button class="btn con">Confirm</button>
 							</div>
+						</div> -->
+
+						<!-- finale -->
+						<!-- <div class="field-set-main step-1-fields">
+							<div class="fields-sets">
+								<div class="fields">
+									<div class="confirmation-message">
+										<img src="./static/images/icon-thank-you.svg" alt="">
+										<h1 class="clr-prim-1 txt-bld heading">Thank you!</h1>
+										<p class="clr-neut-1 paragraph">
+											Thanks for confirming your subscription! We hope you have fun 
+											using our platform. If you ever need support, please feel free 
+											to email us at support@loremgaming.com.
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="back-and-next place-spaced"></div>
 						</div> -->
 
 					</div>
@@ -229,164 +321,3 @@
 
 
 
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!- displays site properly based on user's device --
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="./static/globle.css">
-  <link rel="stylesheet" href="./static/layout.css">
-  <link rel="stylesheet" href="./static/style.css">
-  <link rel="stylesheet" href="./static/states.css">
-  
-  <title>Frontend Mentor | Multi-step form</title>
-
-</head>
-<body>
-
-	<div class="main-layout">
-		<main class="main">
-			<section class="document-form">
-				<div class="form-steps">
-					<div class="steps-btns">
-						<label class="each-step" for="step-1">
-							<input type="radio" name="step" id="step-1" value="step-1" class="sr-only">
-							<span class="step-number-icon">1</span>
-							<div class="step-btn-info">
-								<span class="step-numbering">Step 1</span>
-								<span class="step-title">Your info</span>
-							</div>
-						</label>
-
-						<label class="each-step" for="step-2">
-							<input type="radio" name="step" id="step-2" value="step-2" class="sr-only">
-							<span class="step-number-icon">2</span>
-							<div class="step-btn-info">
-								<span class="step-numbering">Step 2</span>
-								<span class="step-title">Select plan</span>
-							</div>
-						</label>
-
-						<label class="each-step" for="step-3">
-							<input type="radio" name="step" id="step-3" value="step-3" class="sr-only">
-							<span class="step-number-icon">3</span>
-							<div class="step-btn-info">
-								<span class="step-numbering">Step 3</span>
-								<span class="step-title">Add-ons</span>
-							</div>
-						</label>
-
-						<label class="each-step" for="step-4">
-							<input type="radio" name="step" id="step-4" value="step-4" class="sr-only">
-							<span class="step-number-icon">4</span>
-							<div class="step-btn-info">
-								<span class="step-numbering">Step 4</span>
-								<span class="step-title">Summary</span>
-							</div>
-						</label>
-					</div>
-					<picture class="main-section-picture">
-						<source media="(min-width: 69.375em)" srcset="static/images/bg-sidebar-desktop.svg">
-						<img src="static/images/bg-sidebar-mobile.svg" alt="">
-					</picture>
-				</div>
-
-				<div class="form-fields">
-
-					<!- step 1 -->
-					<!-- <div class="field-set-main step-1-fields">
-						<div class="fields-sets">
-							<div class="fields">
-								<h1 class="your-info-title heading-1">Personal info</h1>
-								<p class="your-info-para paragraph">Please provide your name, email address, and phone number.</p>
-		
-								<label class="your-info-text-field-label" for="user-name">Name</label>
-								<input type="text" id="user-name" placeholder="e.g. Stephen King" class="your-info-text-field">
-		
-								<label class="your-info-text-field-label" for="email-eddress">Email Address</label>
-								<input type="text" id="email-eddress" placeholder="e.g. stephenking@lorem.com" class="your-info-text-field">
-		
-								<label class="your-info-text-field-label" for="phone-number">Phone Number</label>
-								<input type="text" id="phone-number" placeholder="e.g. +1 234 567 890" class="your-info-text-field">
-							</div>
-						</div>
-
-						<div class="back-and-next place-end">
-							<button class="next-btn">Next Step</button>
-						</div>
-					</div> -->
-
-					<!-- step 2 --
-					<div class="field-set-main step-2-fields">
-						<div class="fields-sets">
-							<div class="fields">
-								<h2 class="select-plan-title heading-1">Select your plan</h2>
-								<p class="select-plan-para paragraph">You have the option of monthly or yearly billing.</p>
-
-								<div class="select-plan-options">
-								
-									<label for="arcade" class="select-plan-option">
-										<input type="radio" name="select-plan-option" id="arcade" class="sr-only">
-										<img src="./static/images/icon-arcade.svg" alt="">
-										<div>
-											<p class="select-plan-option-title">Arcade</p>
-											<p class="select-plan-option-price">$9/mo</p>
-										</div>
-									</label>
-	
-									<label for="advanced" class="select-plan-option">
-										<input type="radio" name="select-plan-option" id="advanced" class="sr-only">
-										<img src="./static/images/icon-advanced.svg" alt="">
-										<div>
-											<p class="select-plan-option-title">Advanced</p>
-											<p class="select-plan-option-price">$12/mo</p>
-										</div>
-									</label>
-	
-									<label for="pro" class="select-plan-option">
-										<input type="radio" name="select-plan-option" id="pro" class="sr-only">
-										<img src="./static/images/icon-pro.svg" alt="">
-										<div>
-											<p class="select-plan-option-title">pro</p>
-											<p class="select-plan-option-price">$15/mo</p>
-										</div>
-									</label>
-	
-								</div>
-
-								<div class="monthly-and-year">
-									<label for="monthly">
-										<input type="radio" name="select-plan-option" id="monthly" class="sr-only">
-										<span>Monthly</span>
-									</label>
-									<span class="monthly-and-year-icon"></span>
-									<label for="yearly">
-										<input type="radio" name="select-plan-option" id="yearly" class="sr-only">
-										<span>Yearly</span>
-									</label>
-								</div>
-
-							</div>
-						</div>
-
-						<div class="back-and-next place-spaced">
-							<button class="back-btn">Go back</button>
-							<button class="next-btn">Next Step</button>
-						</div>
-					</div>
-
-
-				</div>
-			</section>
-		</main>
-		<!- <footer class="footer">
-			Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    		Coded by <a href="#">Your Name Here</a>.
-		</footer> --
-	</div>
-
-</body>
-</html> -->

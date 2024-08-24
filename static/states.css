@@ -1,5 +1,33 @@
-/* .each-step:has(input[type=radio]:checked) > .step-number-icon {
-    background-color: var(--clr-prim-4);
-    border-color: var(--clr-prim-4);
+/* form links */
+.link > .num-icon { transition: 0.9s; }
+.link:hover > .num-icon {
+    background-color: var(--clr-neut-3);
+    border-color: var(--clr-neut-3);
     color: var(--clr-prim-1);
-} */
+}
+/* form links */
+
+
+/* step 1 */
+/* "info-Wrapper" data-error="false" */
+.info-Wrapper > .info-error,
+.info-Wrapper[data-error=false] > .info-error { display: none; }
+.info-Wrapper[data-error=true] > .info-error { display: block; }
+.info-Wrapper[data-error=true] > .info-text-input { border-color: var(--clr-prim-5); }
+.info-Wrapper > .info-text-input:hover { border-color: var(--clr-prim-2); }
+/* step 1 */
+
+/* step 2 */
+.diff-plans > label > div > p:last-child,
+.diff-plans[data-yearly=false] > label > div > p:last-child { display: none; }
+.diff-plans[data-yearly=true] > label > div > p:last-child { display: block; }
+.plan:hover { border-color: var(--clr-prim-2); }
+.plan:has(input[type=radio]:checked) {
+    border-color: var(--clr-prim-2);
+    background-color: var(--clr-neut-3);
+}
+
+.monthly-and-year > label:has(input[type=radio]:checked) { color: var(--clr-prim-1); }
+.monthly-and-year:has(#monthly:checked) > .monthly-and-year-icon { justify-content: flex-start; }
+.monthly-and-year:has(#yearly:checked) > .monthly-and-year-icon { justify-content: flex-end; }
+/* step 2 */

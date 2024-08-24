@@ -25,11 +25,19 @@
 }
 
 
-.form-steps {
+/* form links */
+
+.form-links {
     position: relative;
 }
 
-.steps-btns {
+.num-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links-list {
     /* width: 100%; */
     display: flex;
     flex-direction: row;
@@ -44,9 +52,13 @@
 
 /* .each-step { } */
 
-.step-btn-info {
+.link-info {
     display: none;
 }
+
+/* form links */
+
+
 
 
 .form-fields {
@@ -72,18 +84,36 @@
     margin-top: -20%;
 }
 
-.tx-inp-d {
+.back-and-next {
+    display: flex;
+}
+
+.place-end { justify-content: flex-end; }
+.place-start { justify-content: flex-start; }
+.place-spaced { justify-content: space-between; }
+
+
+
+
+
+/* step-1 */
+.info-Wrapper {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.step-2-options {
+/* step-1 */
+
+
+
+/* step 2 */
+.diff-plans {
     display: flex;
     flex-direction: column;
 }
 
-.step-2-option {
+.plan {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -105,14 +135,40 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+/* step 2 */
 
-.back-and-next {
+
+
+
+
+/* step 3 */
+.add-ons {
     display: flex;
+    flex-direction: column;
 }
 
-.place-end { justify-content: flex-end; }
-.place-start { justify-content: flex-start; }
-.place-spaced { justify-content: space-between; }
+.add-on {
+    display: flex;
+    align-items: center;
+}
+.add-on > div {
+    flex-grow: 1;
+}
+/* step 3 */
+
+
+
+/* step 4 */
+
+.table-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 10px;
+}
+
+/* step 4 */
+
 
 
 
@@ -127,9 +183,9 @@
         flex-direction: row;
     }
     
-    /* .form-steps { } */
-    
-    .steps-btns {
+    /* .form-links { } */
+    /* form links */
+    .links-list {
         width: max-content;
         transform: translateX(0%);
         left: 33px;
@@ -139,19 +195,25 @@
         gap: 30px;
     }
 
-    .each-step {
+    .link {
         display: flex;
         flex-direction: row;
+        align-items: center;
         gap: 10px;
     }
     
-    .step-btn-info {
+    .link-info {
         display: block;
     }
+    /* form links */
 
     .field-set-main {
         width: 75%;
         margin-inline: auto;
+    }
+    .fields-sets {
+        display: flex;
+        align-items: center;
     }
 
     .fields {
@@ -159,14 +221,25 @@
         margin-top: 0;
     }
 
-    .step-2-options {
+    /* step 1 */
+    /* step 1 */
+
+    /* step 2 */
+    .diff-plans {
         flex-direction: row;
         justify-content: space-between;
     }
     
-    .step-2-option {
+    .plan {
         flex-direction: column;
     }
+    /* step 2 */
+
+     /* step 3 */
+     /* step 3 */
+
+     /* step 4 */
+     /* step 4 */
 }
 
 
@@ -222,107 +295,3 @@
 
 
 
-
-
-/* .main-layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.main {
-    /* background-color: blue; *
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
-
-    display: flex;
-}
-
-.footer {
-    text-align: center;
-}
-
-.document-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-steps {
-    position: relative;
-}
-
-
-.steps-btns {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-}
-
-.each-step {
-    display: flex;
-    align-items: center;
-}
-
-.step-number-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.step-btn-info {
-    display: none;
-}
-
-.step-btn-info > * {
-    display: block;
-}
-
-.form-fields {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
-}
-.field-set-main {
-    display: flex;
-    flex-direction: column;
-}
-
-.fields-sets {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
-}
-
-.back-and-next {
-    display: flex;
-}
-
-.place-end { justify-content: flex-end; }
-.place-start { justify-content: flex-start; }
-.place-spaced { justify-content: space-between; }
-
-/* step-2 fiels *
-
-
-@media only screen and (min-width: 69.375em ) /* min-width:  1110px * {
-    .main {
-        justify-content: center;
-        align-items: center;
-    }
-    .document-form {
-        width: 1000px;
-        display: flex;
-        flex-direction: row;
-    }
-
-
-    .steps-btns {
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-
-    .step-btn-info {
-        display: block;
-    }
-} */
