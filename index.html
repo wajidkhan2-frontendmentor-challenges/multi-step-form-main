@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
-		<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./static/images/favicon-32x32.png">
 		<link rel="stylesheet" href="./static/globle.css">
 		<link rel="stylesheet" href="./static/layout.css">
 		<link rel="stylesheet" href="./static/utility.css">
@@ -35,11 +35,11 @@
 		<div class="main-layout">
 			<main class="main">
 				
-				<section class="document-form">
+				<section class="document-form" id="app">
 					<div class="form-links">
 						<ul class="links-list">
 							<li>
-								<a href="#" class="link">
+								<a href="#step-1" class="link" data-active="true" >
 									<span class="num-icon">1</span>
 									<div class="link-info">
 										<p class="txt-nrml clr-neut-1 upercase">Step 1</p>
@@ -49,7 +49,7 @@
 							</li>
 
 							<li>
-								<a href="#" class="link">
+								<a href="#step-2" class="link" data-active="false" >
 									<span class="num-icon">2</span>
 									<div class="link-info">
 										<p class="txt-nrml clr-neut-1 upercase">Step 2</p>
@@ -58,7 +58,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="#" class="link">
+								<a href="#step-3" class="link" data-active="false" >
 									<span class="num-icon">3</span>
 									<div class="link-info">
 										<p class="txt-nrml clr-neut-1 upercase">Step 3</p>
@@ -67,7 +67,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="#" class="link">
+								<a href="#step-4" class="link" data-active="false" >
 									<span class="num-icon">4</span>
 									<div class="link-info">
 										<p class="txt-nrml clr-neut-1 upercase">Step 4</p>
@@ -84,15 +84,16 @@
 					</div>
 
 					<div class="form-fields">
-
+						
 						<!-- step 1 -->
-						<!-- <div class="field-set-main step-1-fields">
+						<div class="field-set-main step-1-fields" >
 							<div class="fields-sets">
 								<div class="fields">
+
 									<h1 class="hd-s">Personal info</h1>
 									<p class="pr-s">Please provide your name, email address, and phone number.</p>
 									
-									<div class="info-Wrapper" data-error="true">
+									<div class="info-Wrapper" data-error="false">
 										<label class="tx-inp-lbl-s clr-prim-1" for="user-name">Name</label>
 										<p class="info-error">This field is required</p>
 										<input type="text" id="user-name" placeholder="e.g. Stephen King" class="info-text-input">
@@ -116,10 +117,10 @@
 							<div class="back-and-next place-end">
 								<button class="btn nex">Next Step</button>
 							</div>
-						</div> -->
+						</div>
 
 						<!-- step 2 -->
-						<div class="field-set-main step-2-fields">
+						<div class="field-set-main step-2-fields" >
 							<div class="fields-sets">
 								<div class="fields">
 									<h1 class="hd-s">Select your plan</h1>
@@ -179,7 +180,7 @@
 						</div>
 
 						<!-- step 3 -->
-						<!-- <div class="field-set-main step-1-fields">
+						<div class="field-set-main step-1-fields" >
 							<div class="fields-sets">
 								<div class="fields">
 									<h1 class="hd-s">Pick add-ons</h1>
@@ -187,9 +188,11 @@
 
 									<div class="add-ons">
 
-										<label class="add-on" for="">
-											<input type="checkbox" class="sr-only"> 
-											<span class="chechbox-icon"></span>
+										<label class="add-on" for="Online-service">
+											<input type="checkbox" id="Online-service" class="sr-only"> 
+											<span class="chechbox-icon">
+												<img src="./static/images/icon-checkmark.svg" alt="">
+											</span>
 											<div>
 												<p class="txt-mdm clr-prim-1">Online service</p>
 												<p class="txt-nrml clr-neut-1">Access to multiplayer games</p>
@@ -197,9 +200,11 @@
 											<p class="txt-nrml clr-prim-2">+$1/mo</p>
 										</label>
 
-										<label class="add-on" for="">
-											<input type="checkbox" class="sr-only"> 
-											<span class="chechbox-icon"></span>
+										<label class="add-on" for="Larger-storage">
+											<input type="checkbox" id="Larger-storage" class="sr-only"> 
+											<span class="chechbox-icon">
+												<img src="./static/images/icon-checkmark.svg" alt="">
+											</span>
 											<div>
 												<p class="txt-mdm clr-prim-1">Larger storage</p>
 												<p class="txt-nrml clr-neut-1">Extra 1TB of cloud save</p>
@@ -207,9 +212,11 @@
 											<p class="txt-nrml clr-prim-2">+$2/mo</p>
 										</label>
 
-										<label class="add-on" for="">
-											<input type="checkbox" class="sr-only"> 
-											<span class="chechbox-icon"></span>
+										<label class="add-on" for="Customizable-Profile">
+											<input type="checkbox" id="Customizable-Profile" class="sr-only"> 
+											<span class="chechbox-icon">
+												<img src="./static/images/icon-checkmark.svg" alt="">
+											</span>
 											<div>
 												<p class="txt-mdm clr-prim-1">Customizable Profile</p>
 												<p class="txt-nrml clr-neut-1">Custom theme on your profile</p>
@@ -225,10 +232,10 @@
 								<button class="btn gob">Go back</button>
 								<button class="btn nex">Next step</button>
 							</div>
-						</div> -->
+						</div>
 
 						<!-- step 4 -->
-						<!-- <div class="field-set-main step-4-fields">
+						<div class="field-set-main step-4-fields" >
 							<div class="fields-sets">
 								<div class="fields">
 									<h1 class="hd-s">Finishing up</h1>
@@ -241,7 +248,7 @@
 
 												<div>
 													<p class="txt-mdm clr-prim-1">Arcade (monthly)</p>
-													<a class="clr-neut-1" href="#">Change</a>
+													<a class="plan-change" href="#">Change</a>
 												</div>
 												<p class="txt-bld clr-prim-1">$9/mo</p>
 
@@ -274,10 +281,10 @@
 								<button class="btn gob">Go back</button>
 								<button class="btn con">Confirm</button>
 							</div>
-						</div> -->
+						</div>
 
 						<!-- finale -->
-						<!-- <div class="field-set-main step-1-fields">
+						<div class="field-set-main step-1-fields" >
 							<div class="fields-sets">
 								<div class="fields">
 									<div class="confirmation-message">
@@ -292,7 +299,7 @@
 								</div>
 							</div>
 							<div class="back-and-next place-spaced"></div>
-						</div> -->
+						</div>
 
 					</div>
 				</section>
@@ -303,6 +310,8 @@
 				Coded by <a href="#">Your Name Here</a>.
 			</footer>
 		</div>
+		<script type="module" src="./static/Vueapp/app.js"></script>
+
 	</body>
 </html>
 

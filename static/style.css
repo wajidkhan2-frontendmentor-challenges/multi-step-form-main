@@ -170,11 +170,13 @@
 }
 
 .chechbox-icon {
-    display: block;
     border: 1px solid var(--clr-neut-2);
     aspect-ratio: 1/1;
     width: 20px;
     border-radius: 5px;
+}
+.chechbox-icon > img {
+    width: 15px;
 }
 
 
@@ -201,7 +203,12 @@
     border-radius: 10px;
 }
 
-
+.plan-change {
+    color: var(--clr-neut-1);
+    font-weight: var(--fw-medium);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+}
 
 .table-section-1 > .table-data:first-child {
     border-bottom: 1px solid var(--clr-neut-2);
