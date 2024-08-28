@@ -39,7 +39,7 @@
 					<div class="form-links">
 						<ul class="links-list">
 							<li>
-								<a href="#step-1" class="link" data-active="true" >
+								<a href="#step-1" class="link" data-active="true" ref="stp_1_lnk" v-on:click="switch_stp_1">
 									<span class="num-icon">1</span>
 									<div class="link-info">
 										<p class="txt-nrml clr-neut-1 upercase">Step 1</p>
@@ -49,7 +49,7 @@
 							</li>
 
 							<li>
-								<a href="#step-2" class="link" data-active="false" >
+								<a href="#step-2" class="link" data-active="false" ref="stp_2_lnk" v-on:click="switch_stp_2">
 									<span class="num-icon">2</span>
 									<div class="link-info">
 										<p class="txt-nrml clr-neut-1 upercase">Step 2</p>
@@ -58,7 +58,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="#step-3" class="link" data-active="false" >
+								<a href="#step-3" class="link" data-active="false" ref="stp_3_lnk" v-on:click="switch_stp_3">
 									<span class="num-icon">3</span>
 									<div class="link-info">
 										<p class="txt-nrml clr-neut-1 upercase">Step 3</p>
@@ -67,7 +67,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="#step-4" class="link" data-active="false" >
+								<a href="#step-4" class="link" data-active="false" ref="stp_4_lnk" v-on:click="switch_stp_4">
 									<span class="num-icon">4</span>
 									<div class="link-info">
 										<p class="txt-nrml clr-neut-1 upercase">Step 4</p>
@@ -86,41 +86,43 @@
 					<div class="form-fields">
 						
 						<!-- step 1 -->
-						<div class="field-set-main step-1-fields" >
+						<div class="field-set-main step-1-fields" v-if=" current_step == 'step-1' ">
 							<div class="fields-sets">
 								<div class="fields">
 
 									<h1 class="hd-s">Personal info</h1>
 									<p class="pr-s">Please provide your name, email address, and phone number.</p>
-									
-									<div class="info-Wrapper" data-error="false">
-										<label class="tx-inp-lbl-s clr-prim-1" for="user-name">Name</label>
-										<p class="info-error">This field is required</p>
-										<input type="text" id="user-name" placeholder="e.g. Stephen King" class="info-text-input">
-									</div>
 
-									<div class="info-Wrapper">
-										<label class="tx-inp-lbl-s clr-prim-1" for="email-eddress">Email Address</label>
-										<p class="info-error">This field is required</p>
-										<input type="text" id="email-eddress" placeholder="e.g. stephenking@lorem.com" class="info-text-input">
-									</div>
-
-									<div class="info-Wrapper">
-										<label class="tx-inp-lbl-s clr-prim-1" for="phone-number">Phone Number</label>
-										<p class="info-error">This field is required</p>
-										<input type="text" id="phone-number" placeholder="e.g. +1 234 567 890" class="info-text-input">
+									<div>
+										<div class="info-Wrapper" v-bind:data-error="form_fields.step_1.user_name_error">
+											<label class="tx-inp-lbl-s clr-prim-1" for="user-name">Name</label>
+											<p class="info-error">This field is required</p>
+											<input type="text" id="user-name" placeholder="e.g. Stephen King" class="info-text-input" v-model="form_fields.step_1.user_name">
+										</div>
+	
+										<div class="info-Wrapper" v-bind:data-error="form_fields.step_1.email_eddress_error">
+											<label class="tx-inp-lbl-s clr-prim-1" for="email-eddress">Email Address</label>
+											<p class="info-error">This field is required</p>
+											<input type="text" id="email-eddress" placeholder="e.g. stephenking@lorem.com" class="info-text-input" v-model="form_fields.step_1.email_eddress">
+										</div>
+	
+										<div class="info-Wrapper" v-bind:data-error="form_fields.step_1.phone_number_error">
+											<label class="tx-inp-lbl-s clr-prim-1" for="phone-number">Phone Number</label>
+											<p class="info-error">This field is required</p>
+											<input type="text" id="phone-number" placeholder="e.g. +1 234 567 890" class="info-text-input" v-model="form_fields.step_1.phone_number">
+										</div>
 									</div>
 			
 								</div>
 							</div>
 
 							<div class="back-and-next place-end">
-								<button class="btn nex">Next Step</button>
+								<button class="btn nex" v-on:click="switch_stp_2">Next Step</button>
 							</div>
 						</div>
 
 						<!-- step 2 -->
-						<div class="field-set-main step-2-fields" >
+						<div class="field-set-main step-2-fields" v-if=" current_step == 'step-2' ">
 							<div class="fields-sets">
 								<div class="fields">
 									<h1 class="hd-s">Select your plan</h1>
@@ -174,13 +176,13 @@
 							</div>
 
 							<div class="back-and-next place-spaced">
-								<button class="btn gob">Go back</button>
-								<button class="btn nex">Next step</button>
+								<button class="btn gob" v-on:click="switch_stp_1">Go back</button>
+								<button class="btn nex" v-on:click="switch_stp_3">Next step</button>
 							</div>
 						</div>
 
 						<!-- step 3 -->
-						<div class="field-set-main step-1-fields" >
+						<div class="field-set-main step-1-fields" v-if=" current_step == 'step-3' ">
 							<div class="fields-sets">
 								<div class="fields">
 									<h1 class="hd-s">Pick add-ons</h1>
@@ -229,13 +231,13 @@
 							</div>
 
 							<div class="back-and-next place-spaced">
-								<button class="btn gob">Go back</button>
-								<button class="btn nex">Next step</button>
+								<button class="btn gob" v-on:click="switch_stp_2">Go back</button>
+								<button class="btn nex" v-on:click="switch_stp_4">Next step</button>
 							</div>
 						</div>
 
 						<!-- step 4 -->
-						<div class="field-set-main step-4-fields" >
+						<div class="field-set-main step-4-fields" v-if=" current_step == 'step-4' ">
 							<div class="fields-sets">
 								<div class="fields">
 									<h1 class="hd-s">Finishing up</h1>
@@ -248,7 +250,7 @@
 
 												<div>
 													<p class="txt-mdm clr-prim-1">Arcade (monthly)</p>
-													<a class="plan-change" href="#">Change</a>
+													<a class="plan-change" href="#step-2" v-on:click="switch_stp_2">Change</a>
 												</div>
 												<p class="txt-bld clr-prim-1">$9/mo</p>
 
@@ -278,13 +280,13 @@
 							</div>
 
 							<div class="back-and-next place-spaced">
-								<button class="btn gob">Go back</button>
+								<button class="btn gob" v-on:click="switch_stp_3">Go back</button>
 								<button class="btn con">Confirm</button>
 							</div>
 						</div>
 
 						<!-- finale -->
-						<div class="field-set-main step-1-fields" >
+						<div class="field-set-main step-1-fields" v-if=" current_step == 'succes' ">
 							<div class="fields-sets">
 								<div class="fields">
 									<div class="confirmation-message">
