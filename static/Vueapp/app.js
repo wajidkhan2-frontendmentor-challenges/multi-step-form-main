@@ -4,7 +4,8 @@ createApp({
     data() {
         return {
             todo: 'todo',
-            views_data:{
+
+            views_data: {
                 selected_view: "stp_1",
                 key: 1,
 
@@ -16,6 +17,126 @@ createApp({
                 },
 
                 checkers: '',
+
+                fields: {
+                    stp_1: {
+                        user_name: 'yes',
+                        user_name_error: false,
+
+                        email_eddress: 'yes',
+                        email_eddress_error: false,
+                        
+                        phone_number: 'yes',
+                        phone_number_error: false,
+                    },
+
+                    stp_2: {
+                        yearly: false,
+                        selected: "Arcade",
+
+                        options: {
+                            Arcade: {
+                                name: "Arcade",
+                                price: 9,
+                                time: "mo",
+                                
+                                per_month: {
+                                    price: 9,
+                                    time: "mo"
+                                },
+                                per_year: {
+                                    price: 90,
+                                    time: "yr"
+                                }
+                            },
+    
+                            Advanced: {
+                                name: "Advanced",
+                                price: 12,
+                                time: "mo",
+                                
+                                per_month: {
+                                    price: 12,
+                                    time: "mo"
+                                },
+                                per_year: {
+                                    price: 120,
+                                    time: "yr"
+                                }
+                            },
+    
+                            Pro: {
+                                name: "Pro",
+                                price: 15,
+                                time: "mo",
+                                
+                                per_month: {
+                                    price: 15,
+                                    time: "mo"
+                                },
+                                per_year: {
+                                    price: 150,
+                                    time: "yr"
+                                }
+                            }
+                        }
+                    },
+
+                    stp_3: {
+                        Online_service: {
+                            checked: false,
+                            name: "Online service",
+                            price: 1,
+                            time: "mo",
+                            per_month: {
+                                price: 1,
+                                time: "mo"
+                            },
+                            per_year: {
+                                price: 10,
+                                time: "yr"
+                            }
+                        },
+                        Larger_storage: {
+                            checked: false,
+                            name: "Larger storage",
+                            price: 2,
+                            time: "mo",
+                            per_month: {
+                                price: 2,
+                                time: "mo"
+                            },
+                            per_year: {
+                                price: 20,
+                                time: "yr"
+                            }
+                        },
+                        Customizable_Profile: {
+                            checked: false,
+                            name: "Customizable Profile",
+                            price: 2,
+                            time: "mo",
+                            per_month: {
+                                price: 2,
+                                time: "mo"
+                            },
+                            per_year: {
+                                price: 20,
+                                time: "yr"
+                            }
+                        }
+                    },
+                    
+                    stp_4: {
+                        plan: {
+                            name: "",
+                            price: 0,
+                            time: "",
+                        },
+                        add_ons: [],
+                        total: 0,
+                    }
+                }
             },
 
         }
@@ -31,24 +152,32 @@ createApp({
         switch_view(event){
             let Element = event.target.closest("a.link");
 
-            console.log(Element)
+            
             if (Element.dataset.stpkey > this.views_data.key){
+
                 this.views_data.checkers[this.views_data.selected_view]();
                 if (this.views_data.views[this.views_data.selected_view].error == false) {
+
                     this.views_data.views[this.views_data.selected_view].active = false ;
                     this.views_data.views[Element.dataset.stpname].active = true;
                     this.views_data.selected_view = Element.dataset.stpname;
                     this.views_data.key = Element.dataset.stpkey;
-                } else {
-                    alert("way Closed")
-                }
+
+                    console.log(this.views_data.views[Element.dataset.stpname])
+                } 
+                // else {
+                //     alert("way Closed")
+                // }
 
             } else {
+
                 this.views_data.views[this.views_data.selected_view].active = false ;
                 this.views_data.views[Element.dataset.stpname].active = true;
                 this.views_data.selected_view = Element.dataset.stpname;
                 this.views_data.key = Element.dataset.stpkey;
+                console.log(this.views_data.views[Element.dataset.stpname])
             }
+            console.log(Element)
             // this.views_data.views[this.views_data.selected_view].active = false ;
             // this.views_data.views[Element.dataset.stpname].active = true;
             // this.views_data.selected_view = Element.dataset.stpname;
@@ -56,11 +185,86 @@ createApp({
         },
 
         // todo
-        check_stp_1() { console.log("check_stp_1"); this.views_data.views.stp_1.error = false },
-        check_stp_2() { console.log("check_stp_2"); this.views_data.views.stp_2.error = false },
-        check_stp_3() { console.log("check_stp_3"); this.views_data.views.stp_3.error = false },
-        check_stp_4() { console.log("check_stp_4"); this.views_data.views.stp_4.error = false }
+        check_stp_1() { 
+            let errors = 0;
 
+            if (this.views_data.fields.stp_1.user_name == "")
+            {
+                this.views_data.fields.stp_1.user_name_error = true;
+                errors++
+            } else { this.views_data.fields.stp_1.user_name_error = false; }
+
+            if (this.views_data.fields.stp_1.email_eddress == "")
+            {
+                this.views_data.fields.stp_1.email_eddress_error = true;
+                errors++
+            } else { this.views_data.fields.stp_1.email_eddress_error = false; }
+
+            if (this.views_data.fields.stp_1.phone_number == "")
+            {
+                this.views_data.fields.stp_1.phone_number_error = true;
+                errors++
+            } else { this.views_data.fields.stp_1.phone_number_error = false; }
+            
+            if ( errors > 0 ){
+                this.views_data.views.stp_1.error = true;
+            } else { this.views_data.views.stp_1.error = false }
+
+        },
+        check_stp_2() { 
+
+            console.log("check_stp_2"); 
+            let errors = 0;
+
+            if (this.views_data.fields.stp_2.selected == "")
+            {
+                this.views_data.views.stp_2.error = true
+            } else { this.views_data.views.stp_2.error = false }
+
+        },
+
+        check_stp_3() { console.log("check_stp_3"); this.views_data.views.stp_3.error = false },
+        
+        check_stp_4() { console.log("check_stp_4"); this.views_data.views.stp_4.error = true },
+
+        // dienamic
+        // step 2
+        timing_on_change(e) {
+            let Element = e.target;
+            console.log(Element.id)
+
+            // console.log(Object.keys(this.views_data.fields.stp_3))
+            let plan_keys = Object.keys(this.views_data.fields.stp_2.options)
+            let add_ons_keys = Object.keys(this.views_data.fields.stp_3)
+            if (Element.id == "monthly") 
+            {
+                for (let key of plan_keys){
+                    this.views_data.fields.stp_2.options[key].price = this.views_data.fields.stp_2.options[key].per_month.price
+                    this.views_data.fields.stp_2.options[key].time = this.views_data.fields.stp_2.options[key].per_month.time
+                }
+
+                this.views_data.fields.stp_2.yearly = false
+ 
+                for (let key of add_ons_keys){
+                    this.views_data.fields.stp_3[key].price = this.views_data.fields.stp_3[key].per_month.price
+                    this.views_data.fields.stp_3[key].time = this.views_data.fields.stp_3[key].per_month.time
+                }
+            }
+            if (Element.id == "yearly") 
+            {   
+                for (let key of plan_keys){
+                    this.views_data.fields.stp_2.options[key].price = this.views_data.fields.stp_2.options[key].per_year.price
+                    this.views_data.fields.stp_2.options[key].time = this.views_data.fields.stp_2.options[key].per_year.time
+                }
+   
+                this.views_data.fields.stp_2.yearly = true
+
+                for (let key of add_ons_keys){
+                    this.views_data.fields.stp_3[key].price = this.views_data.fields.stp_3[key].per_year.price
+                    this.views_data.fields.stp_3[key].time = this.views_data.fields.stp_3[key].per_year.time
+                }
+            }
+        }
     },
 
     mounted() {
@@ -70,7 +274,11 @@ createApp({
             stp_3: this.check_stp_3,
             stp_4: this.check_stp_4,
         }
-        this.views_data.checkers["stp_2"]();
+
+        // console.log(
+        //     Object.values(this.views_data.views)[0].name
+        // )
+        // this.views_data.views.key(0)
     }
 
 }).mount('#app')
@@ -91,52 +299,6 @@ createApp({
 
 
 
-            // step_2: {
-            //     yearly: false,
-            //     selected: "Arcade",
-
-            //     Arcade: {
-            //         name: "Arcade",
-            //         s_price: "9/mo",
-                    
-            //         per_month: {
-            //             price: 9,
-            //             time: "mo"
-            //         },
-            //         per_year: {
-            //             price: 90,
-            //             time: "yr"
-            //         }
-            //     },
-
-            //     Advanced: {
-            //         name: "Advanced",
-            //         s_price: "12/mo",
-                    
-            //         per_month: {
-            //             price: 12,
-            //             time: "mo"
-            //         },
-            //         per_year: {
-            //             price: 120,
-            //             time: "yr"
-            //         }
-            //     },
-
-            //     Pro: {
-            //         name: "pro",
-            //         s_price: "15/mo",
-                    
-            //         per_month: {
-            //             price: 15,
-            //             time: "mo"
-            //         },
-            //         per_year: {
-            //             price: 150,
-            //             time: "yr"
-            //         }
-            //     }
-            // }
 
 
 

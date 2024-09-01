@@ -52,14 +52,14 @@
 								</a>
 							</li>
 							<li>
-								<a href="#step-3" class="link" data-active="false" 
+								<a href="#step-3" class="link"
 								v-bind:data-active="views_data.views.stp_3.active" 
 								v-bind:data-stpname="views_data.views.stp_3.name"
 								v-bind:data-stpkey="views_data.views.stp_3.key" 
 								v-bind:key="views_data.views.stp_3.key" 
 								v-on:click="switch_view">
-									<span class="num-icon">3</span>
-									<div class="link-info">
+								<span class="num-icon">3</span>
+								<div class="link-info">
 										<p class="txt-nrml clr-neut-1 upercase">Step 3</p>
 										<p class="txt-bld clr-neut-5 upercase">Add-ons</p>
 									</div>
@@ -90,30 +90,29 @@
 					<div class="form-fields">
 						
 						<!-- step 1 -->
-						<div class="field-set-main step-1-fields" >
+						<div class="field-set-main step-1-fields" v-if=" views_data.selected_view ==  views_data.views.stp_1.name">
 							<div class="fields-sets">
 								<div class="fields">
-
 									<h1 class="hd-s">Personal info</h1>
 									<p class="pr-s">Please provide your name, email address, and phone number.</p>
 
 									<div>
-										<div class="info-Wrapper" data-error="true">
+										<div class="info-Wrapper" v-bind:data-error="views_data.fields.stp_1.user_name_error">
 											<label class="tx-inp-lbl-s clr-prim-1" for="user-name">Name</label>
 											<p class="info-error">This field is required</p>
-											<input type="text" id="user-name" placeholder="e.g. Stephen King" class="info-text-input" >
+											<input type="text" id="user-name" placeholder="e.g. Stephen King" class="info-text-input" v-model="views_data.fields.stp_1.user_name">
 										</div>
 	
-										<div class="info-Wrapper" data-error="true">
+										<div class="info-Wrapper" v-bind:data-error="views_data.fields.stp_1.email_eddress_error">
 											<label class="tx-inp-lbl-s clr-prim-1" for="email-eddress">Email Address</label>
 											<p class="info-error">This field is required</p>
-											<input type="text" id="email-eddress" placeholder="e.g. stephenking@lorem.com" class="info-text-input" >
+											<input type="text" id="email-eddress" placeholder="e.g. stephenking@lorem.com" class="info-text-input" v-model="views_data.fields.stp_1.email_eddress">
 										</div>
 	
-										<div class="info-Wrapper" data-error="true">
+										<div class="info-Wrapper" v-bind:data-error="views_data.fields.stp_1.phone_number_error">
 											<label class="tx-inp-lbl-s clr-prim-1" for="phone-number">Phone Number</label>
 											<p class="info-error">This field is required</p>
-											<input type="text" id="phone-number" placeholder="e.g. +1 234 567 890" class="info-text-input" >
+											<input type="text" id="phone-number" placeholder="e.g. +1 234 567 890" class="info-text-input" v-model="views_data.fields.stp_1.phone_number">
 										</div>
 									</div>
 			
@@ -126,47 +125,55 @@
 						</div>
 
 						<!-- step 2 -->
-						<!-- <div class="field-set-main step-2-fields" >
+						<div class="field-set-main step-2-fields" v-if=" views_data.selected_view ==  views_data.views.stp_2.name">
 							<div class="fields-sets">
 								<div class="fields">
 									<h1 class="hd-s">Select your plan</h1>
 									<p class="pr-s">You have the option of monthly or yearly billing.</p>
 
-									<div class="diff-plans" data-yearly="true">
-										
+									{{ views_data.fields.stp_2.selected }}
+									<div class="diff-plans" v-bind:data-yearly="views_data.fields.stp_2.yearly">
+
 										<label for="arcade" class="plan">
-											<input type="radio" name="select-plan-option" id="arcade" class="sr-only" >
+											<input type="radio" name="select-plan-option" id="arcade" class="sr-only" 
+											v-bind:value="views_data.fields.stp_2.options.Arcade.name"
+											v-model="views_data.fields.stp_2.selected">
 											<img src="./static/images/icon-arcade.svg" class="plan-icon" alt="">
 											<div>
 												<p class="txt-mdm clr-prim-1">Arcade</p>
 												<p class="txt-nrml clr-neut-1">
-													$9/mo
+													<!-- $9/mo -->
+													${{ views_data.fields.stp_2.options.Arcade.price }}/{{ views_data.fields.stp_2.options.Arcade.time }}
 												</p>
 												<p class="txt-nrml clr-prim-1">2 months free</p>
 											</div>
 										</label>
 		
 										<label for="advanced" class="plan">
-											<input type="radio" name="select-plan-option" id="advanced" class="sr-only" >
+											<input type="radio" name="select-plan-option" id="advanced" class="sr-only" 
+											v-bind:value="views_data.fields.stp_2.options.Advanced.name"
+											v-model="views_data.fields.stp_2.selected">
 											<img src="./static/images/icon-advanced.svg" class="plan-icon" alt="">
 											<div>
 												<p class="txt-mdm clr-prim-1">Advanced</p>
 												<p class="txt-nrml clr-neut-1">
-													$12/mo
-
+													<!-- $12/mo -->
+													${{ views_data.fields.stp_2.options.Advanced.price }}/{{ views_data.fields.stp_2.options.Advanced.time }}
 												</p>
 												<p class="txt-nrml clr-prim-1">2 months free</p>
 											</div>
 										</label>
 		
 										<label for="pro" class="plan">
-											<input type="radio" name="select-plan-option" id="pro" class="sr-only" >
+											<input type="radio" name="select-plan-option" id="pro" class="sr-only" 
+											v-bind:value="views_data.fields.stp_2.options.Pro.name"
+											v-model="views_data.fields.stp_2.selected">
 											<img src="./static/images/icon-pro.svg" class="plan-icon" alt="">
 											<div>
 												<p class="txt-mdm clr-prim-1">pro</p>
 												<p class="txt-nrml clr-neut-1">
-													$15/mo
-
+													<!-- $15/mo -->
+													${{ views_data.fields.stp_2.options.Pro.price }}/{{ views_data.fields.stp_2.options.Pro.time }}
 												</p>
 												<p class="txt-nrml clr-prim-1">2 months free</p>
 											</div>
@@ -175,12 +182,16 @@
 
 									<div class="monthly-and-year">
 										<label for="monthly">
-											<input type="radio" name="plan-timing" id="monthly" class="sr-only" >
+											<input type="radio" name="plan-timing" id="monthly" class="sr-only" 
+											v-bind:checked="views_data.fields.stp_2.yearly == false? true: false"
+											v-on:change="timing_on_change">
 											<span>Monthly</span>
 										</label>
 										<span class="monthly-and-year-icon"></span>
 										<label for="yearly">
-											<input type="radio" name="plan-timing" id="yearly" class="sr-only"   >
+											<input type="radio" name="plan-timing" id="yearly" class="sr-only" 
+											v-bind:checked="views_data.fields.stp_2.yearly == true? true: false"
+											v-on:change="timing_on_change">
 											<span>Yearly</span>
 										</label>
 									</div>
@@ -192,10 +203,10 @@
 								<button class="btn gob" >Go back</button>
 								<button class="btn nex" >Next step</button>
 							</div>
-						</div> -->
+						</div>
 
 						<!-- step 3 -->
-						<!-- <div class="field-set-main step-1-fields" >
+						<div class="field-set-main step-1-fields" v-if=" views_data.selected_view ==  views_data.views.stp_3.name">
 							<div class="fields-sets">
 								<div class="fields">
 									<h1 class="hd-s">Pick add-ons</h1>
@@ -204,7 +215,8 @@
 									<div class="add-ons">
 
 										<label class="add-on" for="Online-service">
-											<input type="checkbox" id="Online-service" class="sr-only"> 
+											<input type="checkbox" id="Online-service" class="sr-only" 
+											v-model="views_data.fields.stp_3.Online_service.checked"> 
 											<span class="chechbox-icon">
 												<img src="./static/images/icon-checkmark.svg" alt="">
 											</span>
@@ -212,11 +224,15 @@
 												<p class="txt-mdm clr-prim-1">Online service</p>
 												<p class="txt-nrml clr-neut-1">Access to multiplayer games</p>
 											</div>
-											<p class="txt-nrml clr-prim-2">+$1/mo</p>
+											<p class="txt-nrml clr-prim-2">
+												<!-- +$1/mo -->
+												+${{ views_data.fields.stp_3.Online_service.price }}/{{ views_data.fields.stp_3.Online_service.time }}
+											</p>
 										</label>
 
 										<label class="add-on" for="Larger-storage">
-											<input type="checkbox" id="Larger-storage" class="sr-only"> 
+											<input type="checkbox" id="Larger-storage" class="sr-only"
+											v-model="views_data.fields.stp_3.Larger_storage.checked"> 
 											<span class="chechbox-icon">
 												<img src="./static/images/icon-checkmark.svg" alt="">
 											</span>
@@ -224,11 +240,14 @@
 												<p class="txt-mdm clr-prim-1">Larger storage</p>
 												<p class="txt-nrml clr-neut-1">Extra 1TB of cloud save</p>
 											</div>
-											<p class="txt-nrml clr-prim-2">+$2/mo</p>
+											<p class="txt-nrml clr-prim-2">
+												+${{ views_data.fields.stp_3.Larger_storage.price }}/{{ views_data.fields.stp_3.Larger_storage.time }}
+											</p>
 										</label>
 
 										<label class="add-on" for="Customizable-Profile">
-											<input type="checkbox" id="Customizable-Profile" class="sr-only"> 
+											<input type="checkbox" id="Customizable-Profile" class="sr-only"
+											v-model="views_data.fields.stp_3.Customizable_Profile.checked"> 
 											<span class="chechbox-icon">
 												<img src="./static/images/icon-checkmark.svg" alt="">
 											</span>
@@ -236,7 +255,10 @@
 												<p class="txt-mdm clr-prim-1">Customizable Profile</p>
 												<p class="txt-nrml clr-neut-1">Custom theme on your profile</p>
 											</div>
-											<p class="txt-nrml clr-prim-2">+$2/mo</p>
+											<p class="txt-nrml clr-prim-2">
+												<!-- +$2/mo -->
+												+${{ views_data.fields.stp_3.Customizable_Profile.price }}/{{ views_data.fields.stp_3.Customizable_Profile.time }}
+											</p>
 										</label>
 
 									</div>
@@ -247,14 +269,16 @@
 								<button class="btn gob" >Go back</button>
 								<button class="btn nex" >Next step</button>
 							</div>
-						</div> -->
+						</div>
 
 						<!-- step 4 -->
-						<!-- <div class="field-set-main step-4-fields" >
+						<div class="field-set-main step-4-fields" v-if=" views_data.selected_view ==  views_data.views.stp_4.name">
 							<div class="fields-sets">
 								<div class="fields">
 									<h1 class="hd-s">Finishing up</h1>
 									<p class="pr-s">Double-check everything looks OK before confirming.</p>
+
+									{{ views_data.fields.stp_4 }}
 
 									<div class="Summary-table">
 										<div class="table-section-1">
@@ -296,7 +320,7 @@
 								<button class="btn gob" >Go back</button>
 								<button class="btn con">Confirm</button>
 							</div>
-						</div> -->
+						</div>
 
 						<!-- finale -->
 						<!-- <div class="field-set-main step-1-fields" >
