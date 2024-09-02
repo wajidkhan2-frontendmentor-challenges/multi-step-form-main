@@ -278,7 +278,7 @@
 									<h1 class="hd-s">Finishing up</h1>
 									<p class="pr-s">Double-check everything looks OK before confirming.</p>
 
-									{{ views_data.fields.stp_4 }}
+									<!-- {{ views_data.fields.stp_4 }} -->
 
 									<div class="Summary-table">
 										<div class="table-section-1">
@@ -286,14 +286,28 @@
 											<div class="table-data">
 
 												<div>
-													<p class="txt-mdm clr-prim-1">Arcade (monthly)</p>
+													<p class="txt-mdm clr-prim-1">
+														<!-- Arcade (monthly) -->
+														{{ views_data.fields.stp_4.plan.name }} ({{ views_data.fields.stp_4.plan.time == "mo"? "monthly" : "yearly" }})
+													</p>
 													<a class="plan-change" href="#step-2">Change</a>
 												</div>
-												<p class="txt-bld clr-prim-1">$9/mo</p>
+												<p class="txt-bld clr-prim-1">
+													<!-- $9/mo -->
+													${{ views_data.fields.stp_4.plan.price }}/{{ views_data.fields.stp_4.plan.time }} 
+												</p>
 
+											</div>	
+
+											<div class="table-data" v-for="add_on in views_data.fields.stp_4.add_ons">
+												<p class="txt-mdm clr-neut-1">{{add_on.name}}</p>
+												<p class="txt-mdm clr-prim-1">
+													<!-- +$1/mo -->
+													+${{ add_on.price }}/{{ views_data.fields.stp_4.plan.time }} 
+												</p>
 											</div>
 
-											<div class="table-data">
+											<!-- <div class="table-data">
 												<p class="txt-mdm clr-neut-1">Online service</p>
 												<p class="txt-mdm clr-prim-1">+$1/mo</p>
 											</div>
@@ -301,14 +315,19 @@
 											<div class="table-data">
 												<p class="txt-mdm clr-neut-1">Larger storage</p>
 												<p class="txt-mdm clr-prim-1">+$2/mo</p>
-											</div>
+											</div> -->
 
 										</div>
 										<div class="table-section-2">
 
 											<div class="table-data">
-												<p class="txt-mdm clr-neut-1">Total (per month)</p>
-												<p class="txt-bld clr-prim-2">+$12/mo</p>
+												<p class="txt-mdm clr-neut-1">
+													<!-- Total (per month) -->
+													Total (per {{ views_data.fields.stp_4.plan.time == "mo"? "month" : "year" }})
+												</p>
+												<p class="txt-bld clr-prim-2">
+													+${{ views_data.fields.stp_4.total }}/{{ views_data.fields.stp_4.plan.time }} 
+												</p>
 											</div>
 
 										</div>

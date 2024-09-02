@@ -149,28 +149,35 @@ createApp({
     },
     methods: {
 
+        // responsible for switching views
         switch_view(event){
+
+            // get the target element
             let Element = event.target.closest("a.link");
-
             
-            if (Element.dataset.stpkey > this.views_data.key){
+            // check if target element key is greater then currnet view key
+            if (Element.dataset.stpkey > this.views_data.key) {
 
+                // call check function for current view to check for error
                 this.views_data.checkers[this.views_data.selected_view]();
+
+                // if error for current view is false
                 if (this.views_data.views[this.views_data.selected_view].error == false) {
 
+                    // change the view
                     this.views_data.views[this.views_data.selected_view].active = false ;
                     this.views_data.views[Element.dataset.stpname].active = true;
                     this.views_data.selected_view = Element.dataset.stpname;
                     this.views_data.key = Element.dataset.stpkey;
 
                     console.log(this.views_data.views[Element.dataset.stpname])
-                } 
-                // else {
-                //     alert("way Closed")
-                // }
-
+                }
+                // else dont change view
+            
+            // else if target element key is less then currnet view key
             } else {
-
+                
+                // just change view
                 this.views_data.views[this.views_data.selected_view].active = false ;
                 this.views_data.views[Element.dataset.stpname].active = true;
                 this.views_data.selected_view = Element.dataset.stpname;
@@ -178,10 +185,39 @@ createApp({
                 console.log(this.views_data.views[Element.dataset.stpname])
             }
             console.log(Element)
-            // this.views_data.views[this.views_data.selected_view].active = false ;
-            // this.views_data.views[Element.dataset.stpname].active = true;
-            // this.views_data.selected_view = Element.dataset.stpname;
-            // this.views_data.key = Element.dataset.stpkey;
+
+            if (this.views_data.selected_view ==  this.views_data.views.stp_4.name) {
+
+                this.views_data.fields.stp_4.plan.name = this.views_data.fields.stp_2.options[this.views_data.fields.stp_2.selected].name;
+                this.views_data.fields.stp_4.plan.price = this.views_data.fields.stp_2.options[this.views_data.fields.stp_2.selected].price;
+                this.views_data.fields.stp_4.plan.time = this.views_data.fields.stp_2.options[this.views_data.fields.stp_2.selected].time;
+                
+                let add_ons_keys = Object.keys(this.views_data.fields.stp_3)
+
+                this.views_data.fields.stp_4.total = this.views_data.fields.stp_2.options[this.views_data.fields.stp_2.selected].price;
+                this.views_data.fields.stp_4.add_ons = [];
+                for (let key of add_ons_keys){
+                    
+                    if (this.views_data.fields.stp_3[key].checked == true)
+                    {
+                        this.views_data.fields.stp_4.total += this.views_data.fields.stp_3[key].price;
+                        this.views_data.fields.stp_4.add_ons.push({
+                            name: this.views_data.fields.stp_3[key].name,
+                            price: this.views_data.fields.stp_3[key].price,
+                            time: this.views_data.fields.stp_3[key].time,
+                        })
+                    }
+                    // this.views_data.fields.stp_3[key].price = this.views_data.fields.stp_3[key].per_year.price
+                    // this.views_data.fields.stp_3[key].time = this.views_data.fields.stp_3[key].per_year.time
+                }
+                // plan: {
+                //     name: "",
+                //     price: 0,
+                //     time: "",
+                // },
+                // add_ons: [],
+                // total: 0,
+            }
         },
 
         // todo
@@ -286,134 +322,4 @@ createApp({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// createApp({
-//     data() {
-//         return {
-//             todo: 'todo',
-//             section: { s1: false, s2: false, s3: false, s4: false },
-//             formSection: '1',
-//             // stplink: '1',
-//             formfields_1: {
-//                 user_name: '',
-//                 user_name_error: false,
-
-//                 email_eddress: '',
-//                 email_eddress_error: false,
-
-//                 phone_number: '',
-//                 phone_number_error: false,
-//             }
-//         }
-//     },
-//     created() {
-//         let todo = 'todo';
-//     },
-//     methods: {
-//         // switch_stp(e) {
-//         // <a href="#step-1" class="link" data-active="true" data-stplink="1" ref="stp_1_lnk" v-on:click="switch_stp_1"> 
-//         //     let tag = e.target.closest("a.link[data-stplink]")
-//         //     this.$refs[`stp_${this.stplink}_lnk`].dataset.active = false;
-//         //     tag.dataset.active = true;
-//         //     this.stplink = tag.dataset.stplink;
-//         // }
-
-//         switch_stp_1() {
-//             this.$refs.stp_1_lnk.dataset.active = "true";
-//             this.$refs.stp_2_lnk.dataset.active = "false";
-//             this.$refs.stp_3_lnk.dataset.active = "false";
-//             this.$refs.stp_4_lnk.dataset.active = "false";
-//             this.formSection = '1'
-//         },
-//         switch_stp_2() {
-//             this.check_formfields_1()
-//             if (this.section.s1 == true)
-//             {
-//                 this.$refs.stp_1_lnk.dataset.active = "false";
-//                 this.$refs.stp_2_lnk.dataset.active = "true";
-//                 this.$refs.stp_3_lnk.dataset.active = "false";
-//                 this.$refs.stp_4_lnk.dataset.active = "false";
-//                 this.formSection = '2'
-//             }
-//         },
-//         switch_stp_3() {
-//             if (this.section.s1 == true && this.section.s2 == true) {
-//                 this.$refs.stp_1_lnk.dataset.active = "false";
-//                 this.$refs.stp_2_lnk.dataset.active = "false";
-//                 this.$refs.stp_3_lnk.dataset.active = "true";
-//                 this.$refs.stp_4_lnk.dataset.active = "false";
-//                 this.formSection = '3'
-//             }
-//         },
-//         switch_stp_4() {
-//             this.$refs.stp_1_lnk.dataset.active = "false";
-//             this.$refs.stp_2_lnk.dataset.active = "false";
-//             this.$refs.stp_3_lnk.dataset.active = "false";
-//             this.$refs.stp_4_lnk.dataset.active = "true";
-//             this.formSection = '4'
-//         },
-
-//         check_formfields_1()
-//         {   
-//             let ER = 0;
-
-//             this.formfields_1.user_name_error = false;
-//             if (this.formfields_1.user_name == '') {
-//                 this.formfields_1.user_name_error = true;
-//                 ER++;
-//             }
-
-//             this.formfields_1.email_eddress_error = false
-//             if (this.formfields_1.email_eddress == '') {
-//                 this.formfields_1.email_eddress_error = true
-//                 ER++;
-//             }
-            
-//             this.formfields_1.phone_number_error = false
-//             if (this.formfields_1.phone_number == '') {
-//                 this.formfields_1.phone_number_error = true
-//                 ER++;
-//             }
-
-//             if (ER > 0) {
-//                 this.section.s1 = false
-//             } else { this.section.s1 = true }
-//         }
-//     },
-
-//     mounted() {
-//         let todo = 'todo';
-//     }
-
-// }).mount('#app')
 
