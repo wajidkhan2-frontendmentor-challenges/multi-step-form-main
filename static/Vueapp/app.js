@@ -11,6 +11,7 @@ createApp({
                 plan: { name: "plan", key:2, active: false, error: false } ,
                 addon: { name: "addon", key:3, active: false, error: false } ,
                 summary: { name: "summary", key:4, active: false, error: false } ,
+                successmessage: { name: "successmessage", key:5, active: false, error: false } ,
             },
 
             // info section
@@ -108,7 +109,8 @@ createApp({
             },
 
             checkers: '',
-
+            
+            isformConfirmed: false
         }
     },
     created() {
@@ -122,39 +124,43 @@ createApp({
         // responsible for switching views
         switch_view(event) {
 
-            // get the target element
-            let Element = event.target.closest("a[data-sectionlink]");
-            
-            // check if target element key is greater then currnet view key
-            if (Element.dataset.sectionkey > this.current_section_key) {
+            // prevent actions after submition
+            if (this.isformConfirmed == false) {
+                // get the target element
+                let Element = event.target.closest("a[data-sectionlink]");
                 
-                // call check function for current view to check for error
-                this.checkers[this.current_section]();
-
-                // if error for current view is false
-                if (this.sections[this.current_section].error == false) {
-
-                    // change the view
+                // check if target element key is greater then currnet view key
+                if (Element.dataset.sectionkey > this.current_section_key) {
+                    
+                    // call check function for current view to check for error
+                    this.checkers[this.current_section]();
+    
+                    // if error for current view is false
+                    if (this.sections[this.current_section].error == false) {
+    
+                        // change the view
+                        this.sections[this.current_section].active = false
+                        this.sections[Element.dataset.sectionlink].active = true;
+                        this.current_section = Element.dataset.sectionlink;
+                        this.current_section_key = Element.dataset.sectionkey;
+    
+                    }
+                    // else dont change view
+                
+                // else if target element key is less then currnet view key
+                } else {
+                    
+                    // just change view
                     this.sections[this.current_section].active = false
                     this.sections[Element.dataset.sectionlink].active = true;
                     this.current_section = Element.dataset.sectionlink;
                     this.current_section_key = Element.dataset.sectionkey;
-
-                }
-                // else dont change view
-            
-            // else if target element key is less then currnet view key
-            } else {
-                
-                // just change view
-                this.sections[this.current_section].active = false
-                this.sections[Element.dataset.sectionlink].active = true;
-                this.current_section = Element.dataset.sectionlink;
-                this.current_section_key = Element.dataset.sectionkey;
-
-            }
     
-            console.log(Element);
+                }
+                
+                if (this.current_section ==  this.sections.summary.name) { this.create_summary(); }
+                console.log(Element);
+            }
         },
 
         // info
@@ -187,7 +193,7 @@ createApp({
             }
             
         },
-
+        
         // plan
         payment_term_change(event) {
             let Element = event.target;
@@ -222,6 +228,43 @@ createApp({
                 }
             }
 
+        },
+
+        create_summary() {
+            
+            this.summary.selected_plan.name = this.plan.options[this.plan.selected].name;
+            this.summary.selected_plan.price = this.plan.options[this.plan.selected].price;
+
+            this.summary.total_payment_over_term = this.plan.options[this.plan.selected].price;
+
+            this.summary.selected_add_ons = [];
+            let addon_keys = Object.keys(this.add_ons);
+            for (let key of addon_keys) {
+                if (this.add_ons[key].checked == true) {
+
+                    this.summary.selected_add_ons.push({
+                        name: this.add_ons[key].name,
+                        price: this.add_ons[key].price,
+                    });
+
+                    this.summary.total_payment_over_term += this.add_ons[key].price;;
+                }
+            }
+        },
+
+        confirmation() {
+            // pass
+            if (this.isformConfirmed == false)
+            {
+                // active step 4 
+                this.sections[this.current_section].active = true;
+
+                // change section to the confirmation msg
+                this.current_section = this.sections.successmessage.name;
+                this.current_section_key = this.sections.successmessage.key;
+                
+                this.isformConfirmed = true;
+            }
         }
 
     },

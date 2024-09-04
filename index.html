@@ -308,17 +308,27 @@
 											<div class="table-data">
 
 												<div>
-													<p class="txt-mdm clr-prim-1">Arcade (monthly)</p>
+													<p class="txt-mdm clr-prim-1">
+														{{ summary.selected_plan.name }} ({{ payment_term.termly }})
+													</p>
 													<a class="plan-change" href="#step-2"
 													v-bind:data-active="sections.plan.active" 
 													v-bind:data-sectionlink="sections.plan.name"
 													v-bind:data-sectionkey="sections.plan.key" 
 													v-on:click="switch_view">Change</a>
 												</div>
-												<p class="txt-bld clr-prim-1">$9/mo</p>
+												<p class="txt-bld clr-prim-1">
+													${{ summary.selected_plan.price }}/{{ payment_term.te }}
+												</p>
 
 											</div>
 
+											<div class="table-data" v-for="add_on in summary.selected_add_ons">
+												<p class="txt-mdm clr-neut-1">{{ add_on.name }}</p>
+												<p class="txt-mdm clr-prim-1">
+													+${{ add_on.price }}/{{ payment_term.te }}</p>
+											</div>
+											<!-- 
 											<div class="table-data">
 												<p class="txt-mdm clr-neut-1">Online service</p>
 												<p class="txt-mdm clr-prim-1">+$1/mo</p>
@@ -328,13 +338,20 @@
 												<p class="txt-mdm clr-neut-1">Larger storage</p>
 												<p class="txt-mdm clr-prim-1">+$2/mo</p>
 											</div>
+											 -->
 
 										</div>
 										<div class="table-section-2">
 
 											<div class="table-data">
-												<p class="txt-mdm clr-neut-1">Total (per month)</p>
-												<p class="txt-bld clr-prim-2">+$12/mo</p>
+												<p class="txt-mdm clr-neut-1">
+													<!-- Total (per month) -->
+													Total (per {{ payment_term.term }})
+												</p>
+												<p class="txt-bld clr-prim-2">
+													<!-- +$12/mo -->
+													+${{ summary.total_payment_over_term }}/{{ payment_term.te }}
+												</p>
 											</div>
 
 										</div>
@@ -350,12 +367,19 @@
 								v-bind:data-sectionlink="sections.addon.name"
 								v-bind:data-sectionkey="sections.addon.key" 
 								v-on:click="switch_view">Go back</a>
-								<button class="btn con">Confirm</button>
+
+								<!-- <a class="btn con"
+								v-bind:data-active="sections.successmessage.active" 
+								v-bind:data-sectionlink="sections.successmessage.name"
+								v-bind:data-sectionkey="sections.successmessage.key" 
+								v-on:click="switch_view">Confirm</a> -->
+
+								<button class="btn con" v-on:click="confirmation">Confirm</button>
 							</div>
 						</div>
 
 						<!-- finale  -->
-						<!-- <div class="field-set-main step-1-fields" >
+						<div class="field-set-main step-1-fields"  v-if=" current_section ==  sections.successmessage.name">
 							<div class="fields-sets">
 								<div class="fields">
 									<div class="confirmation-message">
@@ -370,7 +394,7 @@
 								</div>
 							</div>
 							<div class="back-and-next place-spaced"></div>
-						</div> -->
+						</div>
 
 					</div>
 				</section>
