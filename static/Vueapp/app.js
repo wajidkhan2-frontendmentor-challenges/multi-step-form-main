@@ -15,6 +15,16 @@ createApp({
             },
 
             // info section
+            // info: {
+            //     user_name: '',
+            //     user_name_error: false,
+
+            //     email_eddress: '',
+            //     email_eddress_error: false,
+                
+            //     phone_number: '',
+            //     phone_number_error: false,
+            // },
             info: {
                 user_name: 'My name',
                 user_name_error: false,
@@ -22,7 +32,7 @@ createApp({
                 email_eddress: 'Myemailaddress@email.com',
                 email_eddress_error: false,
                 
-                phone_number: '+92090078601',
+                phone_number: '+1 234 567 890',
                 phone_number_error: false,
             },
 
@@ -126,6 +136,7 @@ createApp({
 
             // prevent actions after submition
             if (this.isformConfirmed == false) {
+
                 // get the target element
                 let Element = event.target.closest("a[data-sectionlink]");
                 
@@ -155,7 +166,6 @@ createApp({
                     this.sections[Element.dataset.sectionlink].active = true;
                     this.current_section = Element.dataset.sectionlink;
                     this.current_section_key = Element.dataset.sectionkey;
-    
                 }
                 
                 if (this.current_section ==  this.sections.summary.name) { this.create_summary(); }
@@ -174,8 +184,12 @@ createApp({
                 errors++;
             } 
 
+
             this.info.email_eddress_error = false;
             if (this.info.email_eddress == "") {
+                this.info.email_eddress_error = true;
+                errors++;
+            } else if (this.Valid_Email(this.info.email_eddress) == false) {
                 this.info.email_eddress_error = true;
                 errors++;
             } 
@@ -184,7 +198,10 @@ createApp({
             if (this.info.phone_number == "") {
                 this.info.phone_number_error = true;
                 errors++;
-            } 
+            } else if (this.Valid_PhoneNumber(this.info.phone_number) == false) {
+                this.info.phone_number_error = true;
+                errors++;
+            }
 
             this.sections.info.error = false;
             if ( errors > 0 )
@@ -232,11 +249,14 @@ createApp({
 
         create_summary() {
             
+            // get the selected plan and price
             this.summary.selected_plan.name = this.plan.options[this.plan.selected].name;
             this.summary.selected_plan.price = this.plan.options[this.plan.selected].price;
 
+            //  for total price
             this.summary.total_payment_over_term = this.plan.options[this.plan.selected].price;
 
+            // get selected add ons and calculate the total price
             this.summary.selected_add_ons = [];
             let addon_keys = Object.keys(this.add_ons);
             for (let key of addon_keys) {
@@ -252,8 +272,9 @@ createApp({
             }
         },
 
+
         confirmation() {
-            // pass
+
             if (this.isformConfirmed == false)
             {
                 // active step 4 
@@ -265,6 +286,20 @@ createApp({
                 
                 this.isformConfirmed = true;
             }
+        },
+
+        Valid_Email(value) {
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            console.log(value, value.match(validRegex))
+            return value.match(validRegex)? true : false;
+        },
+
+        Valid_PhoneNumber(value) {
+            // depend in which country you are using this 
+            // form for used the correct regular expression.  
+
+            // check if there are 10 digits on not
+            return value.match(/\d/g).length===10;
         }
 
     },

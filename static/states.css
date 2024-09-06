@@ -35,12 +35,14 @@
 .diff-plans[data-yearly=false] > label > div > p:last-child { display: none; }
 .diff-plans[data-yearly=true] > label > div > p:last-child { display: block; }
 .plan:hover { border-color: var(--clr-prim-2); }
+.plan:has(input[type=radio]:focus) { outline: 2px solid var(--clr-prim-2); }
 .plan:has(input[type=radio]:checked) {
     border-color: var(--clr-prim-2);
     background-color: var(--clr-neut-3);
 }
 
 .monthly-and-year > label:has(input[type=radio]:checked) { color: var(--clr-prim-1); }
+.monthly-and-year > label:has(input[type=radio]:focus) { outline: 2px solid var(--clr-prim-2); }
 .monthly-and-year:has(#monthly:checked) > .monthly-and-year-icon { justify-content: flex-start; }
 .monthly-and-year:has(#yearly:checked) > .monthly-and-year-icon { justify-content: flex-end; }
 /* step 2 */
@@ -52,13 +54,15 @@
     border-color: var(--clr-prim-2);
     background-color: var(--clr-neut-3);
 }
+.add-on:has(input[type=checkbox]:focus) {
+    outline: 2px solid var(--clr-prim-2);
+}
 .add-on > .chechbox-icon > img { display: none; }
 .add-on:has(input[type=checkbox]:checked) > .chechbox-icon {
     background-color: var(--clr-prim-2);
     border-color: var(--clr-prim-2);
 }
 .add-on:has(input[type=checkbox]:checked) > .chechbox-icon > img { display: block; }
-
 /* step 3 */
 
 
