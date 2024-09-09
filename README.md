@@ -9,7 +9,7 @@ desktop view\
 ![](./Screenshots/desktop.png)
 
 ### Demo
-[click Me]()
+[click Me](https://wajidkhan2-frontendmentor-challenges.github.io/multi-step-form-main/)
 
 ### Built with
 - Mobile-first workflow
