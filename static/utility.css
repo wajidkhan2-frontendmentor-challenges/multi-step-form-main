@@ -27,3 +27,6 @@
     color: var(--clr-neut-5);
 }
 
+.txt-nowrap {
+    white-space: nowrap;
+}

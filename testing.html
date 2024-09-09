@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="text_input">Name</label>
+    <input type="text" id="text_input" aria-describedby="error_id" aria-invalid="false">
+    <div id="error_id" aria-live="polite">
+    </div>
+    <button id="submit">submit</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=> {
+            let text_input = document.getElementById('text_input');
+            let error_id = document.getElementById('error_id');
+            let submit_btn = document.getElementById('submit');
+
+            let error = false
+            
+            submit_btn.onclick = () => {
+                error_id.innerHTML = "This field is required";
+                text_input.focus();
+                error = true
+            }
+
+            // text_input.onfocus = () => {
+            //     if (error == true)
+            //     {
+            //         error_id.innerHTML = "This field is required";
+            //         text_input.focus();
+            //     }
+            // }
+        })
+    </script>
+</body>
+</html>

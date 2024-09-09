@@ -160,6 +160,8 @@
 
 .add-on > div {
     flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
 }
 /* step 3 */
 
@@ -173,9 +175,52 @@
     align-items: center;
     padding-block: 10px;
 }
+.Summary-plan {
+    /* background-color: aqua; */
+    width: 100%;
+    height: 50px;
+    position: relative;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* flex-wrap: wrap; */
+}
+.Summary-plan > div > p:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.Summary-plan > div > p:last-child {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.Summary-plan > button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+/* .Summary-plan > div {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Summary-plan > div > p:first-child {
+    align-self: flex-start;
+}
+.Summary-plan > div > p:last-child {
+    align-self: flex-end;
+} */
 
+/* .Summary-plan > button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+} */
 /* step 4 */
-
 
 
 

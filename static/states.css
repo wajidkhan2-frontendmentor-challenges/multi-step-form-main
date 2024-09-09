@@ -2,8 +2,8 @@
 .link > .num-icon { transition: 0.9s; }
 .link[data-active=true] > .num-icon,
 .link:hover > .num-icon {
-    background-color: var(--clr-neut-3);
-    border-color: var(--clr-neut-3);
+    background-color: var(--clr-prim-4);
+    border-color: var(--clr-prim-4);
     color: var(--clr-prim-1);
 }
 /* form links */
@@ -28,6 +28,9 @@
 .info-Wrapper[data-error=true] > .info-error { display: block; }
 .info-Wrapper[data-error=true] > .info-text-input { border-color: var(--clr-prim-5); }
 .info-Wrapper > .info-text-input:hover { border-color: var(--clr-prim-2); }
+.info-Wrapper > label > .hidden-error { display: none; }
+
+.info-Wrapper[data-error=true] > label > .hidden-error { display: inline; }
 /* step 1 */
 
 /* step 2 */

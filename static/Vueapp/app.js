@@ -49,13 +49,13 @@ createApp({
                     },
                     Advanced: {
                         name: "Advanced",
-                        price: 9,
+                        price: 12,
                         short_term_price: 12,
                         long_term_price: 120
                     },
                     Pro: {
                         name: "Pro",
-                        price: 9,
+                        price: 15,
                         short_term_price: 15,
                         long_term_price: 150
                     },
@@ -133,12 +133,14 @@ createApp({
 
         // responsible for switching views
         switch_view(event) {
-
+            event.preventDefault()
+            
             // prevent actions after submition
             if (this.isformConfirmed == false) {
 
                 // get the target element
-                let Element = event.target.closest("a[data-sectionlink]");
+                // let Element = event.target.closest("a[data-sectionlink]");
+                let Element = event.target.closest("button[data-sectionlink]");
                 
                 // check if target element key is greater then currnet view key
                 if (Element.dataset.sectionkey > this.current_section_key) {
@@ -154,6 +156,8 @@ createApp({
                         this.sections[Element.dataset.sectionlink].active = true;
                         this.current_section = Element.dataset.sectionlink;
                         this.current_section_key = Element.dataset.sectionkey;
+
+                        this.$refs.form_fields.focus();
     
                     }
                     // else dont change view
@@ -166,10 +170,20 @@ createApp({
                     this.sections[Element.dataset.sectionlink].active = true;
                     this.current_section = Element.dataset.sectionlink;
                     this.current_section_key = Element.dataset.sectionkey;
+
+                    this.$refs.form_fields.focus();
                 }
                 
                 if (this.current_section ==  this.sections.summary.name) { this.create_summary(); }
-                console.log(Element);
+
+                // focus fields
+                // this.$refs.form_fields.focus();
+                // console.log(this.$refs[this.current_section], this.current_section);
+                // this.$refs["form-fields"].id = this.current_section;
+                // let ancher_tag = document.createElement("a");
+                // ancher_tag.href = `#${this.current_section}`;
+                // ancher_tag.click();
+
             }
         },
 
@@ -177,28 +191,33 @@ createApp({
         verify_info() {
 
             let errors = 0;
+            let error_fields = []
 
             this.info.user_name_error = false;
             if (this.info.user_name == "") {
+                error_fields.push(this.$refs.info_user_name);
                 this.info.user_name_error = true;
                 errors++;
             } 
-
-
+            
             this.info.email_eddress_error = false;
             if (this.info.email_eddress == "") {
+                error_fields.push(this.$refs.info_email_eddress);
                 this.info.email_eddress_error = true;
                 errors++;
             } else if (this.Valid_Email(this.info.email_eddress) == false) {
+                error_fields.push(this.$refs.info_email_eddress);
                 this.info.email_eddress_error = true;
                 errors++;
             } 
-
+            
             this.info.phone_number_error = false;
             if (this.info.phone_number == "") {
+                error_fields.push(this.$refs.info_phone_number);
                 this.info.phone_number_error = true;
                 errors++;
             } else if (this.Valid_PhoneNumber(this.info.phone_number) == false) {
+                error_fields.push(this.$refs.info_phone_number);
                 this.info.phone_number_error = true;
                 errors++;
             }
@@ -207,6 +226,10 @@ createApp({
             if ( errors > 0 )
             {
                 this.sections.info.error = true;
+
+                // focus the first error
+                console.log(error_fields)
+                error_fields[0].focus();
             }
             
         },
@@ -263,6 +286,7 @@ createApp({
                 if (this.add_ons[key].checked == true) {
 
                     this.summary.selected_add_ons.push({
+                        Ukey: key,
                         name: this.add_ons[key].name,
                         price: this.add_ons[key].price,
                     });
@@ -285,6 +309,8 @@ createApp({
                 this.current_section_key = this.sections.successmessage.key;
                 
                 this.isformConfirmed = true;
+
+                this.$refs.form_fields.focus();
             }
         },
 
@@ -311,6 +337,7 @@ createApp({
             addon: () => {  },
             summary: () => {  },
         }
+        // this.$refs["form-fields"].id = this.current_section;
     }
 
 }).mount('#app')

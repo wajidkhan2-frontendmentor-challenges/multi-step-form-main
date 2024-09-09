@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -15,6 +19,26 @@
 
 	</head>
 	<body>
+		<!-- <p>
+			<label for="email">Email address:</label>
+			<input
+			  type="text"
+			  name="email"
+			  id="email"
+			  aria-invalid="true"
+			  aria-errormessage="err1" />
+			<span id="err1" class="errormessage" aria-live="polite">Error: Enter a valid email address</span>
+		</p>
+		<p>
+			<label for="email">Email address:</label>
+			<input
+			  type="text"
+			  name="email"
+			  id="email"
+			  aria-invalid="true"
+			  aria-describedby="err1" />
+			<span id="err1" class="errormessage" aria-live="polite">Error: Enter a valid email address</span>
+		</p> -->
 
 		<div class="main-layout">
 			<main class="main">
@@ -23,57 +47,60 @@
 					<div class="form-links">
 						<ul class="links-list">
 							<li>
-								<a href="#step-1" class="link" 
+								<button class="link" aria-labelledby="step_1_your_info"
 								v-bind:data-active="sections.info.active" 
 								v-bind:data-sectionlink="sections.info.name"
 								v-bind:data-sectionkey="sections.info.key" 
 								v-on:click="switch_view">
-									<span class="num-icon">1</span>
-									<div class="link-info">
+									<span class="num-icon" aria-hidden="true">1</span>
+									<div class="link-info" id="step_1_your_info">
 										<p class="txt-nrml clr-neut-1 upercase">Step 1</p>
 										<p class="txt-bld clr-neut-5 upercase">Your info</p>
 									</div>
-								</a>
+								</button>
 							</li>
 
 							<li>
-								<a href="#step-2" class="link" 
+								<button class="link" aria-labelledby="step_2_Select_plan"
 								v-bind:data-active="sections.plan.active" 
 								v-bind:data-sectionlink="sections.plan.name"
 								v-bind:data-sectionkey="sections.plan.key" 
-								v-on:click="switch_view" >
-									<span class="num-icon">2</span>
-									<div class="link-info">
+								v-on:click="switch_view">
+									<span class="num-icon" aria-hidden="true">2</span>
+									<div class="link-info" id="step_2_Select_plan">
 										<p class="txt-nrml clr-neut-1 upercase">Step 2</p>
 										<p class="txt-bld clr-neut-5 upercase">Select plan</p>
 									</div>
-								</a>
+								</button>
+
 							</li>
 							<li>
-								<a href="#step-3" class="link" 
+								<button class="link" aria-labelledby="step_3_Add_ons"
 								v-bind:data-active="sections.addon.active" 
 								v-bind:data-sectionlink="sections.addon.name"
 								v-bind:data-sectionkey="sections.addon.key"
-								v-on:click="switch_view" >
-									<span class="num-icon">3</span>
-									<div class="link-info">
+								v-on:click="switch_view">
+									<span class="num-icon" aria-hidden="true">3</span>
+									<div class="link-info" id="step_3_Add_ons">
 										<p class="txt-nrml clr-neut-1 upercase">Step 3</p>
 										<p class="txt-bld clr-neut-5 upercase">Add-ons</p>
 									</div>
-								</a>
+								</button>
+
 							</li>
 							<li>
-								<a href="#step-4" class="link" 
+								<button class="link" aria-labelledby="step_4_Summary"
 								v-bind:data-active="sections.summary.active" 
 								v-bind:data-sectionlink="sections.summary.name"
 								v-bind:data-sectionkey="sections.summary.key"
-								v-on:click="switch_view" >
-									<span class="num-icon">4</span>
-									<div class="link-info">
+								v-on:click="switch_view">
+									<span class="num-icon" aria-hidden="true">4</span>
+									<div class="link-info" id="step_4_Summary">
 										<p class="txt-nrml clr-neut-1 upercase">Step 4</p>
 										<p class="txt-bld clr-neut-5 upercase">Summary</p>
 									</div>
-								</a>
+								</button>
+
 							</li>
 						</ul>
 
@@ -83,10 +110,10 @@
 						</picture>
 					</div>
 
-					<div class="form-fields">
+					<div class="form-fields" tabindex="0" id="form-fields-section" ref="form_fields" >
 						
 						<!-- step 1 -->
-						<div class="field-set-main step-1-fields" v-if=" current_section ==  sections.info.name">
+						<div class="field-set-main step-1-fields"  aria-label="your info fields" v-if=" current_section ==  sections.info.name" v-bind:ref="sections.info.name">
 							<div class="fields-sets">
 								<div class="fields">
 
@@ -95,21 +122,21 @@
 
 									<div>
 										<div class="info-Wrapper" v-bind:data-error="info.user_name_error">
-											<label class="tx-inp-lbl-s clr-prim-1" for="user-name">Name</label>
-											<p class="info-error">This field is required</p>
-											<input type="text" id="user-name" placeholder="e.g. Stephen King" class="info-text-input" v-model:="info.user_name">
+											<label class="tx-inp-lbl-s clr-prim-1" for="user-name">Name <span class="sr-only hidden-error">field is required</span> </label>
+											<p class="info-error" >This field is required</p>
+											<input type="text" id="user-name" placeholder="e.g. Stephen King" class="info-text-input" ref="info_user_name" v-model:="info.user_name">
 										</div>
 	
 										<div class="info-Wrapper" v-bind:data-error="info.email_eddress_error">
-											<label class="tx-inp-lbl-s clr-prim-1" for="email-eddress">Email Address</label>
+											<label class="tx-inp-lbl-s clr-prim-1" for="email-eddress">Email Address <span class="sr-only hidden-error">field is required</span> </label>
 											<p class="info-error">This field is required</p>
-											<input type="text" id="email-eddress" placeholder="e.g. stephenking@lorem.com" class="info-text-input" v-model:="info.email_eddress">
+											<input type="text" id="email-eddress" placeholder="e.g. stephenking@lorem.com" class="info-text-input" ref="info_email_eddress" v-model:="info.email_eddress">
 										</div>
 	
 										<div class="info-Wrapper" v-bind:data-error="info.phone_number_error">
-											<label class="tx-inp-lbl-s clr-prim-1" for="phone-number">Phone Number</label>
+											<label class="tx-inp-lbl-s clr-prim-1" for="phone-number">Phone Number <span class="sr-only hidden-error">field is required</span> </label>
 											<p class="info-error">This field is required</p>
-											<input type="text" id="phone-number" placeholder="e.g. +1 234 567 890" class="info-text-input" v-model:="info.phone_number">
+											<input type="text" id="phone-number" placeholder="e.g. +1 234 567 890" class="info-text-input" ref="info_phone_number" v-model:="info.phone_number">
 										</div>
 									</div>
 			
@@ -118,22 +145,22 @@
 
 							<div class="back-and-next place-end">
 								<!-- <button class="btn nex" >Next Step</button> -->
-								<a href="#step-2" class="btn nex" 
+								<button class="btn nex" 
 								v-bind:data-active="sections.plan.active" 
 								v-bind:data-sectionlink="sections.plan.name"
 								v-bind:data-sectionkey="sections.plan.key" 
-								v-on:click="switch_view" >Next Step</a>
+								v-on:click="switch_view">Next Step</button>
 							</div>
 						</div>
 
 						<!-- step 2 -->
-						<div class="field-set-main step-2-fields" v-if=" current_section ==  sections.plan.name">
+						<div class="field-set-main step-2-fields" v-if=" current_section ==  sections.plan.name" v-bind:ref="sections.plan.name">
 							<div class="fields-sets">
 								<div class="fields">
-									<h1 class="hd-s">Select your plan</h1>
+									<h2 class="hd-s">Select your plan</h2>
 									<p class="pr-s">You have the option of monthly or yearly billing.</p>
 
-									<div class="diff-plans" v-bind:data-yearly=" payment_term.te == payment_term.short_term.ti? false : true ">
+									<div class="diff-plans" role="radiogroup" aria-label="plan options" v-bind:data-yearly=" payment_term.te == payment_term.short_term.ti? false : true ">
 										
 										
 										<label for="arcade" class="plan">
@@ -142,8 +169,9 @@
 											v-model="plan.selected">
 											<img src="./static/images/icon-arcade.svg" class="plan-icon" alt="">
 											<div>
-												<p class="txt-mdm clr-prim-1">Arcade</p>
-												<p class="txt-nrml clr-neut-1">
+												<p class="txt-mdm clr-prim-1 plan-title">Arcade</p>
+												<p hidden id="arcade-aria-price">{{ plan.options.Arcade.price }}$ a {{ payment_term.term }}</p>
+												<p class="txt-nrml clr-neut-1" aria-labelledby="arcade-aria-price">
 													<!-- $9/mo -->
 													${{ plan.options.Arcade.price }}/{{ payment_term.te }}
 												</p>
@@ -157,8 +185,9 @@
 											v-model="plan.selected">
 											<img src="./static/images/icon-advanced.svg" class="plan-icon" alt="">
 											<div>
-												<p class="txt-mdm clr-prim-1">Advanced</p>
-												<p class="txt-nrml clr-neut-1">
+												<p class="txt-mdm clr-prim-1 plan-title">Advanced</p>
+												<p hidden id="advanced-aria-price">{{ plan.options.Advanced.price }}$ a {{ payment_term.term }}</p>
+												<p class="txt-nrml clr-neut-1" aria-labelledby="advanced-aria-price">
 													<!-- $12/mo -->
 													${{ plan.options.Advanced.price }}/{{ payment_term.te }}
 												</p>
@@ -172,8 +201,9 @@
 											v-model="plan.selected">
 											<img src="./static/images/icon-pro.svg" class="plan-icon" alt="">
 											<div>
-												<p class="txt-mdm clr-prim-1">pro</p>
-												<p class="txt-nrml clr-neut-1">
+												<p class="txt-mdm clr-prim-1 plan-title">pro</p>
+												<p hidden id="pro-aria-price">{{ plan.options.Pro.price }}$ a {{ payment_term.term }}</p>
+												<p class="txt-nrml clr-neut-1" aria-labelledby="pro-aria-price">
 													<!-- $15/mo -->
 													${{ plan.options.Pro.price }}/{{ payment_term.te }}
 												</p>
@@ -182,7 +212,7 @@
 										</label>
 									</div>
 
-									<div class="monthly-and-year">
+									<div class="monthly-and-year" role="radiogroup" aria-label="payment term">
 										<label for="monthly">
 											<input type="radio" name="plan-timing" id="monthly" class="sr-only" 
 											v-bind:checked=" payment_term.te == payment_term.short_term.ti? true : false "
@@ -202,29 +232,29 @@
 							</div>
 
 							<div class="back-and-next place-spaced">
-								<!-- <button class="btn gob" >Go back</button>
-								<button class="btn nex" >Next step</button> -->
-								<a href="#step-1" class="btn gob" 
+
+								<button class="btn gob"
 								v-bind:data-active="sections.info.active" 
 								v-bind:data-sectionlink="sections.info.name"
 								v-bind:data-sectionkey="sections.info.key" 
-								v-on:click="switch_view">Go back</a>
-								<a href="#step-3" class="btn nex" 
+								v-on:click="switch_view">Go back</button>
+
+								<button class="btn nex" 
 								v-bind:data-active="sections.addon.active" 
 								v-bind:data-sectionlink="sections.addon.name"
 								v-bind:data-sectionkey="sections.addon.key"
-								v-on:click="switch_view" >Next step</a>
+								v-on:click="switch_view">Next step</button>
 							</div>
 						</div>
 
 						<!-- step 3  -->
-						<div class="field-set-main step-1-fields" v-if=" current_section ==  sections.addon.name">
+						<div class="field-set-main step-1-fields" v-if=" current_section ==  sections.addon.name" v-bind:ref="sections.addon.name">
 							<div class="fields-sets">
 								<div class="fields">
-									<h1 class="hd-s">Pick add-ons</h1>
+									<h2 class="hd-s">Pick add-ons</h2>
 									<p class="pr-s">Add-ons help enhance your gaming experience.</p>
 
-									<div class="add-ons">
+									<div class="add-ons" role="group" aria-label="add on options">
 										
 										<label class="add-on" for="Online-service">
 											<input type="checkbox" id="Online-service" class="sr-only"
@@ -233,10 +263,12 @@
 												<img src="./static/images/icon-checkmark.svg" alt="">
 											</span>
 											<div>
-												<p class="txt-mdm clr-prim-1">Online service</p>
+												<p class="txt-mdm clr-prim-1 add-on-title">Online service</p>
 												<p class="txt-nrml clr-neut-1">Access to multiplayer games</p>
 											</div>
-											<p class="txt-nrml clr-prim-2">
+
+											<p hidden id="Online-service-aria-price">{{ add_ons.Online_service.price }}$+ a {{ payment_term.term }}</p>
+											<p class="txt-nrml clr-prim-2 txt-nowrap" aria-labelledby="Online-service-aria-price">
 												<!-- +$1/mo -->
 												+${{ add_ons.Online_service.price }}/{{ payment_term.te }}
 											</p>
@@ -249,10 +281,12 @@
 												<img src="./static/images/icon-checkmark.svg" alt="">
 											</span>
 											<div>
-												<p class="txt-mdm clr-prim-1">Larger storage</p>
+												<p class="txt-mdm clr-prim-1 add-on-title">Larger storage</p>
 												<p class="txt-nrml clr-neut-1">Extra 1TB of cloud save</p>
 											</div>
-											<p class="txt-nrml clr-prim-2">
+
+											<p hidden id="Larger-storage-aria-price">{{ add_ons.Larger_storage.price }}$+ a {{ payment_term.term }}</p>
+											<p class="txt-nrml clr-prim-2 txt-nowrap" aria-labelledby="Larger-storage-aria-price">
 												<!-- +$2/mo -->
 												+${{ add_ons.Larger_storage.price }}/{{ payment_term.te }}
 											</p>
@@ -264,11 +298,14 @@
 											<span class="chechbox-icon">
 												<img src="./static/images/icon-checkmark.svg" alt="">
 											</span>
+
 											<div>
-												<p class="txt-mdm clr-prim-1">Customizable Profile</p>
+												<p class="txt-mdm clr-prim-1 add-on-title">Customizable Profile</p>
 												<p class="txt-nrml clr-neut-1">Custom theme on your profile</p>
 											</div>
-											<p class="txt-nrml clr-prim-2">
+
+											<p hidden id="Customizable-Profile-aria-price">{{ add_ons.Customizable_Profile.price }}$+ a {{ payment_term.term }}</p>
+											<p class="txt-nrml clr-prim-2 txt-nowrap" aria-labelledby="Customizable-Profile-aria-price">
 												<!-- +$2/mo -->
 												+${{ add_ons.Customizable_Profile.price }}/{{ payment_term.te }}
 											</p>
@@ -279,112 +316,86 @@
 							</div>
 
 							<div class="back-and-next place-spaced">
-								<!-- <button class="btn gob" >Go back</button>
-								<button class="btn nex" >Next step</button> -->
-								<a href="#step-2" class="btn gob" 
+
+								<button class="btn gob" 
 								v-bind:data-active="sections.plan.active" 
 								v-bind:data-sectionlink="sections.plan.name"
 								v-bind:data-sectionkey="sections.plan.key" 
-								v-on:click="switch_view">Go back</a>
-
-								<a href="#step-4" class="btn nex" 
+								v-on:click="switch_view">Go back</button>
+								<button class="btn nex" 
 								v-bind:data-active="sections.summary.active" 
 								v-bind:data-sectionlink="sections.summary.name"
 								v-bind:data-sectionkey="sections.summary.key"
-								v-on:click="switch_view" >Next step</a>
+								v-on:click="switch_view" >Next step</button>
 							</div>
 						</div>
 
 						<!-- step 4 -->
-						<div class="field-set-main step-4-fields" v-if=" current_section ==  sections.summary.name">
+						<div class="field-set-main step-4-fields" v-if=" current_section == sections.summary.name "  v-bind:ref="sections.summary.name">
 							<div class="fields-sets">
 								<div class="fields">
-									<h1 class="hd-s">Finishing up</h1>
+									<h2 class="hd-s">Finishing up</h2>
 									<p class="pr-s">Double-check everything looks OK before confirming.</p>
 
-									<div class="Summary-table">
-										<div class="table-section-1">
-
-											<div class="table-data">
-
+									<div class="Summary-table" role="section" tabindex="0">
+										<div class="Summary-plan-addons table-section-1">
+											<div class="Summary-plan">
 												<div>
-													<p class="txt-mdm clr-prim-1">
-														{{ summary.selected_plan.name }} ({{ payment_term.termly }})
-													</p>
-													<a class="plan-change" href="#step-2"
-													v-bind:data-active="sections.plan.active" 
-													v-bind:data-sectionlink="sections.plan.name"
-													v-bind:data-sectionkey="sections.plan.key" 
-													v-on:click="switch_view">Change</a>
-												</div>
-												<p class="txt-bld clr-prim-1">
+													<p class="txt-mdm clr-prim-1">{{ summary.selected_plan.name }} ({{ payment_term.termly }})</p>
+													<p class="txt-bld clr-prim-1"
+													v-bind:aria-label="summary.selected_plan.price + '$ a ' + payment_term.term">
 													${{ summary.selected_plan.price }}/{{ payment_term.te }}
-												</p>
+													</p>
+												</div>
 
+												<button class="plan-change" aria-label="Go back to step 2 Select plan"
+												v-bind:data-active="sections.plan.active" 
+												v-bind:data-sectionlink="sections.plan.name"
+												v-bind:data-sectionkey="sections.plan.key" 
+												v-on:click="switch_view">Change</button>
 											</div>
 
-											<div class="table-data" v-for="add_on in summary.selected_add_ons">
+											<div class="Summary-addon table-data" v-for="add_on in summary.selected_add_ons">
 												<p class="txt-mdm clr-neut-1">{{ add_on.name }}</p>
-												<p class="txt-mdm clr-prim-1">
-													+${{ add_on.price }}/{{ payment_term.te }}</p>
-											</div>
-											<!-- 
-											<div class="table-data">
-												<p class="txt-mdm clr-neut-1">Online service</p>
-												<p class="txt-mdm clr-prim-1">+$1/mo</p>
+												<p class="txt-mdm clr-prim-1"
+												v-bind:aria-label="add_on.price + '$ a ' + payment_term.term">
+												+${{ add_on.price }}/{{ payment_term.te }}</p>
 											</div>
 
-											<div class="table-data">
-												<p class="txt-mdm clr-neut-1">Larger storage</p>
-												<p class="txt-mdm clr-prim-1">+$2/mo</p>
-											</div>
-											 -->
 
 										</div>
-										<div class="table-section-2">
-
+										<div class="Summary-total-section table-section-2">
 											<div class="table-data">
-												<p class="txt-mdm clr-neut-1">
-													<!-- Total (per month) -->
-													Total (per {{ payment_term.term }})
-												</p>
-												<p class="txt-bld clr-prim-2">
-													<!-- +$12/mo -->
-													+${{ summary.total_payment_over_term }}/{{ payment_term.te }}
-												</p>
+												<p class="txt-mdm clr-neut-1">Total (per {{ payment_term.term }})</p>
+												<p class="txt-bld clr-prim-2 summary-total-price"
+												v-bind:aria-label="summary.total_payment_over_term + '$ a ' + payment_term.term"
+												>+${{ summary.total_payment_over_term }}/{{ payment_term.te }}</p>
 											</div>
-
 										</div>
 									</div>
+						
 								</div>
 							</div>
 
 							<div class="back-and-next place-spaced">
-								<!-- <button class="btn gob" >Go back</button>
-								<button class="btn con">Confirm</button> -->
-								<a href="#step-3" class="btn gob" 
+
+								<button class="btn gob" 
 								v-bind:data-active="sections.addon.active" 
 								v-bind:data-sectionlink="sections.addon.name"
 								v-bind:data-sectionkey="sections.addon.key" 
-								v-on:click="switch_view">Go back</a>
-
-								<!-- <a class="btn con"
-								v-bind:data-active="sections.successmessage.active" 
-								v-bind:data-sectionlink="sections.successmessage.name"
-								v-bind:data-sectionkey="sections.successmessage.key" 
-								v-on:click="switch_view">Confirm</a> -->
+								v-on:click="switch_view">Go back</button>
 
 								<button class="btn con" v-on:click="confirmation">Confirm</button>
 							</div>
 						</div>
 
 						<!-- finale  -->
-						<div class="field-set-main step-1-fields"  v-if=" current_section ==  sections.successmessage.name">
+						<div class="field-set-main step-1-fields" v-if=" current_section ==  sections.successmessage.name" v-bind:ref="sections.successmessage.name">
 							<div class="fields-sets">
 								<div class="fields">
 									<div class="confirmation-message">
 										<img src="./static/images/icon-thank-you.svg" alt="">
-										<h1 class="clr-prim-1 txt-bld heading">Thank you!</h1>
+										<h2 class="clr-prim-1 txt-bld heading">Thank you!</h2>
 										<p class="clr-neut-1 paragraph">
 											Thanks for confirming your subscription! We hope you have fun 
 											using our platform. If you ever need support, please feel free 
@@ -411,3 +422,30 @@
 </html>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
