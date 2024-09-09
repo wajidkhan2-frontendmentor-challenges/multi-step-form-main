@@ -15,26 +15,26 @@ createApp({
             },
 
             // info section
-            // info: {
-            //     user_name: '',
-            //     user_name_error: false,
-
-            //     email_eddress: '',
-            //     email_eddress_error: false,
-                
-            //     phone_number: '',
-            //     phone_number_error: false,
-            // },
             info: {
-                user_name: 'My name',
+                user_name: '',
                 user_name_error: false,
 
-                email_eddress: 'Myemailaddress@email.com',
+                email_eddress: '',
                 email_eddress_error: false,
                 
-                phone_number: '+1 234 567 890',
+                phone_number: '',
                 phone_number_error: false,
             },
+            // info: {
+            //     user_name: 'My name',
+            //     user_name_error: false,
+
+            //     email_eddress: 'Myemailaddress@email.com',
+            //     email_eddress_error: false,
+                
+            //     phone_number: '+1 234 567 890',
+            //     phone_number_error: false,
+            // },
 
             // plan section
             plan: {
